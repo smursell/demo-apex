@@ -1,0 +1,8 @@
+<apex:page controller="sharinpixFlowController">
+    <flow:interview name="sharinpix_flow" interview="{!myflow}"></flow:interview>
+    <apex:outputText value="test :{!myflow.case_id}"></apex:outputText>
+    <apex:outputpanel rendered="{!myflow.case_id != ''}">
+    	<sharinpix:SharinPix parameters="{'path': '/pagelayout/{!myflow.case_id}', 'abilities': {'{!myflow.case_id}': { 'Access': {'see': true, 'image_upload': true, 'image_list': true}}}}"/>
+    </apex:outputpanel>
+        <!--<c:SharinPix claims="{abilities:{'plop':{Access:{paste:true,image_copy:true,image_download:true,image_rotate:true,image_crop:true,image_delete:true,image_upload:true,image_list:true,see:true}}}}" id="miam"/-->
+</apex:page>
