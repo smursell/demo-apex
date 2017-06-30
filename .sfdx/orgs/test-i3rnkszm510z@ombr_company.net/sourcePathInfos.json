@@ -1,0 +1,101 @@
+[
+    [
+        "/Users/ombr/public_html/demo-apex/force-app",
+        {
+            "state": "n",
+            "sourcePath": "/Users/ombr/public_html/demo-apex/force-app",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 102,
+            "modifiedTime": 1498851301000,
+            "changeTime": 1498851301000,
+            "contentHash": "b28b7af69320201d1cf206ebf28373980add1451",
+            "isWorkspace": false,
+            "isArtifactRoot": true
+        }
+    ],
+    [
+        "/Users/ombr/public_html/demo-apex/force-app/main",
+        {
+            "state": "n",
+            "sourcePath": "/Users/ombr/public_html/demo-apex/force-app/main",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 102,
+            "modifiedTime": 1498851301000,
+            "changeTime": 1498851301000,
+            "contentHash": "7505d64a54e061b7acd54ccd58b49dc43500b635",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/ombr/public_html/demo-apex/force-app/main/default",
+        {
+            "state": "u",
+            "sourcePath": "/Users/ombr/public_html/demo-apex/force-app/main/default",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 136,
+            "modifiedTime": 1498851635000,
+            "changeTime": 1498851635000,
+            "contentHash": "b4afd72db6e4c5208696ba627b7991e3fd2ac754"
+        }
+    ],
+    [
+        "/Users/ombr/public_html/demo-apex/force-app/main/default/aura",
+        {
+            "state": "n",
+            "sourcePath": "/Users/ombr/public_html/demo-apex/force-app/main/default/aura",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 68,
+            "modifiedTime": 1498851301000,
+            "changeTime": 1498851301000,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/ombr/public_html/demo-apex",
+        {
+            "state": "n",
+            "sourcePath": "/Users/ombr/public_html/demo-apex",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 340,
+            "modifiedTime": 1498851404000,
+            "changeTime": 1498851404000,
+            "contentHash": "65167c7252b72cfe7aca649b64dcb33ee5f8a07c",
+            "isWorkspace": true,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/ombr/public_html/demo-apex/force-app/main/default/flexipages/Compte_Page_d_enregistrement.flexipage-meta.xml",
+        {
+            "state": "u",
+            "sourcePath": "/Users/ombr/public_html/demo-apex/force-app/main/default/flexipages/Compte_Page_d_enregistrement.flexipage-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 6421,
+            "modifiedTime": 1498851635000,
+            "changeTime": 1498851635000,
+            "contentHash": "8b202db5e6d29150830a6da24cacb5bc825d04ae"
+        }
+    ],
+    [
+        "/Users/ombr/public_html/demo-apex/force-app/main/default/flexipages",
+        {
+            "state": "u",
+            "sourcePath": "/Users/ombr/public_html/demo-apex/force-app/main/default/flexipages",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 102,
+            "modifiedTime": 1498851635000,
+            "changeTime": 1498851635000,
+            "contentHash": "6d5a9856e1f5dad3f751ea1fbe5db9a5225b8109"
+        }
+    ]
+]
