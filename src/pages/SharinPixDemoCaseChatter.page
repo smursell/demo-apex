@@ -1,0 +1,35 @@
+<apex:page standardController="Case" extensions="SharinPixDemoCaseChatterCtrl">
+    <script>
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function(e) {
+        if (e.origin != "https://app.sharinpix.com") return;
+        var payload = (((e || {}).data || {}).payload || {}).action;
+        if (payload == 'Share on Chatter') {
+            var images = e.data.payload.images;
+            var paramImages = [];
+            images.forEach(function (image) {
+                paramImages.push({
+                    albumId: image.album_id,
+                    filename: image.filename,
+                    imageUrl: image.thumbnails.large
+                });
+            });
+            Visualforce.remoting.Manager.invokeAction(
+                '{! $RemoteAction.SharinPixDemoCaseChatterCtrl.postToChatter }',
+                JSON.stringify(paramImages),
+                function(res, evt) {
+                    if (evt.statusCode == 200) {
+                        var message = 'Image(s) shared.';
+                        alert(message);
+                    } else {
+                        alert('An error has occurred. See the console for details.');
+                    }
+                }
+            );
+        }
+    }, false);
+    </script>
+    <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+</apex:page>
