@@ -1,0 +1,21 @@
+<apex:page standardController="Contact" extensions="SharinPixDemoActionEmailCtrl">
+<script>
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent,function(e) {
+        if (e.origin !== "https://app.sharinpix.com") return;
+        console.log(e.data.payload.images);
+        if (e.data.payload.action == 'Send an email') {
+            Visualforce.remoting.Manager.invokeAction(
+                '{! $RemoteAction.SharinPixDemoActionEmailCtrl.sendMail }',
+                JSON.stringify(e.data.payload.images),
+                function(res) {
+                    alert('Email(s) have been sent.');
+                }
+            );
+        }
+    }, false);
+  </script>
+  <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+</apex:page>
