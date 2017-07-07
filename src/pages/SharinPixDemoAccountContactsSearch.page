@@ -1,0 +1,4 @@
+<apex:page standardController="Account" extensions="SharinPixDemoAccountContactsSearchCtrl"
+           showHeader="false" sidebar="false">
+    <apex:canvasApp developerName="Albums" width="100%" height="500px" parameters="{! parameters }"/>
+</apex:page>
