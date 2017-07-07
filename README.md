@@ -2,7 +2,7 @@
 
 This demo adds a Visualforce named [SharinPixDemoAccountContactsSearch](/src/pages/SharinPixDemoAccountContactsSearch.page) to Account. This album does a search to retrieve all the contacts associated with the account and display their images.
 
-The [line 12 of SharinPixDemoAccountContactsSearch](/src/classes/SharinPixDemoAccountContactsSearchCtrl.cls#L12) can be modified to choose which images to show in the search results.
+The [line 12 of SharinPixDemoAccountContactsSearchCtrl](/src/classes/SharinPixDemoAccountContactsSearchCtrl.cls#L12) can be modified to choose which images to show in the search results.
 
 For example, we have albums with IDs “album1”, “album2” and “new album” and tags named “tag1” and “tag 2”.
 
