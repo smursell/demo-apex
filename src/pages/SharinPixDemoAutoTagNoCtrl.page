@@ -1,0 +1,3 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false">
+    <sharinpix:SharinPix parameters="{'abilities':{'{!CASESAFEID($CurrentPage.Parameters.Id)}':{'Tags':{'Land':{'fr':'Terre','en':'Land'},'Sea':{'fr':'Mer','en':'Sea'}},'Access':{'image_upload':true,'image_tag':true,'image_list':true,'see':true}},'tags':{'auto_tag':'Sea'}},'Id':'{!CASESAFEID($CurrentPage.Parameters.Id)}'}"/>
+</apex:page>
