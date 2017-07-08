@@ -1,0 +1,27 @@
+<apex:page standardController="Contact" extensions="SharinPixDemoDeleteImageCtrl">
+    <script>
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function(e) {
+        if (e.origin !== "https://app.sharinpix.com") return;
+        console.log(e.data.payload.images);
+        if (e.data.payload.action == 'Delete images') {
+            Visualforce.remoting.Manager.invokeAction(
+                '{! $RemoteAction.SharinPixDemoDeleteImageCtrl.deleteImages }',
+                JSON.stringify(e.data.payload.images),
+                function(res, evt) {
+                    if (evt.status) {
+                        alert('Images deleted. Please reload page.');
+                    } else {
+                    	alert('Error. See console log.');
+                        console.log('res', res);
+                        console.log('evt', evt);
+                    }
+                }
+            );
+        }
+    }, false);
+    </script>
+    <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
+</apex:page>
