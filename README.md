@@ -1,4 +1,4 @@
-# Demo - Update Salesforce fields with actions
+# Update Salesforce fields with actions
 
 SharinPix images can easily be added to Salesforce fields. For example, in cases where you want a primary picture to be displayed for a record.
 
