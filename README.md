@@ -1,4 +1,4 @@
-# SharinPix Account Contacts Search
+# Show account's contacts images (Search)
 
 This demo adds a Visualforce named [SharinPixDemoAccountContactsSearch](/src/pages/SharinPixDemoAccountContactsSearch.page) to Account. This album does a search to retrieve all the contacts associated with the account and display their images.
 
