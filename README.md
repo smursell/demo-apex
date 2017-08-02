@@ -7,6 +7,6 @@ This demo shows how to show tags on albums. [Line 17](/src/classes/SharinPixDemo
     'fr' => 'French Translation'
 }
 ```
-You can add as many as you want.
+You can add as many as you want. Note that the tags you add will also be added to your SharinPix organization and thus be accessible in your admin dashboard.
 
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=tags)
