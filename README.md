@@ -1,8 +1,5 @@
 
-# [Flow](https://github.com/sharinpix/demo-apex/tree/flow)
+# Image resize using SharinPix Utils class and VisualForce page
 
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=flow)
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image-resize)
 
-# Work Order token
-
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=work_order_token)
