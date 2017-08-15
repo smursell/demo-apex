@@ -21,7 +21,7 @@ public with sharing class SharinPixResizeDemo {
 	}
 
 	@RemoteAction
-	public static String resizeImage(String publicId, Integer width, Integer height) {
+	public static String resizeImage(String publicId, Integer width, Integer height, String crop) {
 		return (String) sharinPixUtils.getImageExternalUrl(new Map<String, Object> {
 			'image_id' => publicId,
 			'sharinpix' => new Map<String, Object> {
@@ -30,7 +30,7 @@ public with sharing class SharinPixResizeDemo {
 				'full_size' => false
 			},
 			'transformations' => new Map<String, Object> {
-				'crop' => 'fill',
+				'crop' => crop,
 				'width' => width,
 				'height' => height
 			}
