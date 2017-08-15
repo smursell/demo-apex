@@ -22,21 +22,11 @@
 			}
 		);
 	}
-	let faceCrop = function() {
-		Visualforce.remoting.Manager.invokeAction(
-			'{! $RemoteAction.SharinPixResizeDemo.faceCrop }',
-			latestImageViewed,
-			function(res) {
-				newWindow.location = res;
-			}
-		)
-	}
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 	eventer(messageEvent, function(e) {
 		if (e.origin === 'https://app.sharinpix.com') {
-			console.log(e);
 			let data = e.data;
 			switch (data.name) {
 				case 'viewer-image-viewed':
@@ -60,7 +50,7 @@
 		}
 	}, 200)
 	</script>
-	<apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" />
+	<apex:canvasApp developerName="Albums" height="500px" width="100%" parameters="{! parameters }" />
 	<apex:form onsubmit="return false" id="main_form">
 		<hr />
 		<h1>Resize</h1><br />
@@ -69,9 +59,6 @@
 		Width <br />
 		<input type="number" value="150" id="image_width" /> <br />
 		<apex:commandButton value="Resize" id="resize_button" onclick="return ifImageSelected(buttonClicked)" /> <br />
-		<hr />
-		<h1>Face Crop</h1><br />
-		<apex:commandButton value="Face crop" onclick="return ifImageSelected(faceCrop)" />
 	</apex:form>
 	<div id="warning_message">
 		Click on an image first...
