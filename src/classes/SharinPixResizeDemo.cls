@@ -1,14 +1,22 @@
 public with sharing class SharinPixResizeDemo {
-	public String publicId {get; set;}
-	public Integer height {get; set;}
-	public Integer width {get; set;}
-	public String imageUrl {get; set;}
+	public String albumId {get; set;}
+	public String parameters {get; set;}
 
 	public static SharinPix.Utils sharinPixUtils = new SharinPix.Utils();
 
-	public void resizeImage() {
-		height = 100;
-		width = 150;
+	public SharinPixResizeDemo() {
+		albumId = generateRandomString();
+		parameters = JSON.serialize(new Map<String, Object> {
+			'abilities' => new Map<String, Object> {
+				albumId => new Map<String, Object> {
+					'Access' => new Map<String, Object> {
+						'see' => true,
+						'image_list' => true
+					}
+				}
+			},
+			'Id' => albumId
+		});
 	}
 
 	@RemoteAction
@@ -44,5 +52,19 @@ public with sharing class SharinPixResizeDemo {
 				'height' => 200
 			}
 		}).get('resource_url');
+	}
+
+	public String generateRandomString() {
+		return 'demo_' + generateRandomString(32);
+	}
+
+	public static String generateRandomString(Integer len) {
+		final String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
+		String randStr = '';
+		while (randStr.length() < len) {
+			Integer idx = Math.mod(Math.abs(Crypto.getRandomInteger()), chars.length());
+			randStr += chars.substring(idx, idx+1);
+		}
+		return randStr; 
 	}
 }

@@ -12,8 +12,8 @@
 		return false;
 	}
 	let buttonClicked = function() {
-		let height = document.getElementById('{!$Component.main_form.image_height}').value;
-		let width = document.getElementById('{!$Component.main_form.image_width}').value;
+		let height = document.getElementById('image_height').value;
+		let width = document.getElementById('image_width').value;
 		Visualforce.remoting.Manager.invokeAction(
 			'{! $RemoteAction.SharinPixResizeDemo.resizeImage }',
 			latestImageViewed, width, height,
@@ -60,14 +60,14 @@
 		}
 	}, 200)
 	</script>
-	<apex:canvasApp developerName="Albums" height="500px" parameters="{abilities:{'289ff457-299e-481f-9458-ee38af23c1cf':{Access:{see:true,image_list:true,share:true}}},Id:'289ff457-299e-481f-9458-ee38af23c1cf'}" />
+	<apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" />
 	<apex:form onsubmit="return false" id="main_form">
 		<hr />
 		<h1>Resize</h1><br />
 		Height <br />
-		<apex:inputText value="{! height }" id="image_height" /> <br />
+		<input type="number" value="100" id="image_height" /> <br />
 		Width <br />
-		<apex:inputText value="{! width }" id="image_width" /> <br />
+		<input type="number" value="150" id="image_width" /> <br />
 		<apex:commandButton value="Resize" id="resize_button" onclick="return ifImageSelected(buttonClicked)" /> <br />
 		<hr />
 		<h1>Face Crop</h1><br />
