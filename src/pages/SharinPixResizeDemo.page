@@ -1,0 +1,79 @@
+<apex:page showHeader="true" sidebar="true" controller="SharinPixResizeDemo">
+	<script>
+	let latestImageViewed = null;
+	let newWindow;
+	let ifImageSelected = function (func) {
+		if (latestImageViewed) {
+			newWindow = window.open('https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif', '_blank');
+			func();
+		} else {
+			alert('Select an image from the album first!');
+		}
+		return false;
+	}
+	let buttonClicked = function() {
+		let height = document.getElementById('{!$Component.main_form.image_height}').value;
+		let width = document.getElementById('{!$Component.main_form.image_width}').value;
+		Visualforce.remoting.Manager.invokeAction(
+			'{! $RemoteAction.SharinPixResizeDemo.resizeImage }',
+			latestImageViewed, width, height,
+			function(res) {
+				newWindow.location = res;
+			}
+		);
+	}
+	let faceCrop = function() {
+		Visualforce.remoting.Manager.invokeAction(
+			'{! $RemoteAction.SharinPixResizeDemo.faceCrop }',
+			latestImageViewed,
+			function(res) {
+				newWindow.location = res;
+			}
+		)
+	}
+	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+	var eventer = window[eventMethod];
+	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+	eventer(messageEvent, function(e) {
+		if (e.origin === 'https://app.sharinpix.com') {
+			console.log(e);
+			let data = e.data;
+			switch (data.name) {
+				case 'viewer-image-viewed':
+					latestImageViewed = data.payload.image.public_id;
+					break;
+				case 'viewer-closed':
+					latestImageViewed = null
+			}
+		}
+	}, false);
+	setInterval(function() {
+		let mainForm = document.getElementById('{!$Component.main_form}');
+		let warningMessage = document.getElementById('warning_message');
+		if (!mainForm || !warningMessage) return;
+		if (latestImageViewed) {
+			mainForm.style.display = 'block';
+			warningMessage.style.display = 'none';
+		} else {
+			mainForm.style.display = 'none';
+			warningMessage.style.display = 'block';
+		}
+	}, 200)
+	</script>
+	<apex:canvasApp developerName="Albums" height="500px" parameters="{abilities:{'289ff457-299e-481f-9458-ee38af23c1cf':{Access:{see:true,image_list:true,share:true}}},Id:'289ff457-299e-481f-9458-ee38af23c1cf'}" />
+	<apex:form onsubmit="return false" id="main_form">
+		<hr />
+		<h1>Resize</h1><br />
+		Height <br />
+		<apex:inputText value="{! height }" id="image_height" /> <br />
+		Width <br />
+		<apex:inputText value="{! width }" id="image_width" /> <br />
+		<apex:commandButton value="Resize" id="resize_button" onclick="return ifImageSelected(buttonClicked)" /> <br />
+		<hr />
+		<h1>Face Crop</h1><br />
+		<apex:commandButton value="Face crop" onclick="return ifImageSelected(faceCrop)" />
+	</apex:form>
+	<div id="warning_message">
+		Click on an image first...
+	</div>
+</apex:page>
