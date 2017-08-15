@@ -11,7 +11,8 @@ public with sharing class SharinPixResizeDemo {
 				albumId => new Map<String, Object> {
 					'Access' => new Map<String, Object> {
 						'see' => true,
-						'image_list' => true
+						'image_list' => true,
+						'image_upload' => true
 					}
 				}
 			},
