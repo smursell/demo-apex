@@ -8,6 +8,7 @@ For this scenario, let's assume the image original size is 400 x 200 (width x he
 * scale - The image is made to scale in both horizontally and vertically in order to match the new height and new width. Hence the proportion is not maintained.
 
 <img src="https://raw.githubusercontent.com/Akhilesh05/img/master/scale.jpg">
+
 * fit - The image is made to fit either horizontally or vertically in way so as not to lose any
 
 <img src="https://raw.githubusercontent.com/Akhilesh05/img/master/fit.jpg">
