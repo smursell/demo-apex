@@ -1,42 +1,29 @@
 
-# Image Face Crop
+# Image Text Overlay
 
-Go to 'Setup' in your Salesforce organization instance. Find the Visualforce page named 'VFP01_CropFace' in the Visual Pages Section. Preview the Visualforce page. Once on the page, click on an image to define the image cropping configurations. Set a width, height ,crop type('crop'), radius('max') and gravity, then click on the 'Crop' button.
+Go to an Account object. Edit its page layout and add the VisualPage 'VFP_ImageTextOverlay.vfp' to a new section. Remember to set its size to 500px.
 
-## Explaining the gravity parameters options
+## Explaining the parameter options for text overlay
 
-### Gravity
 
-* Face - Automatically detect the largest face in an image and aim to make it the center of the cropped image. Alternatively, use face coordinates specified by API if available. Defaults to the 'north' gravity if no face was detected.
+* Text - The textual content that will overlaid on the image.
 
-<img src="http://res.cloudinary.com/demo/image/upload/c_crop,g_face,h_80,w_80/face_top.jpg">
+<img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-text.png">
 
-* face:center - Same as the 'face' gravity, but defaults to 'center' gravity instead of 'north' if no face is detected.
+* font-style - The type of font-style for the text (e.g Arial, Times New Roman, etc..).
 
-* faces:auto - Same as the 'faces' gravity, but defaults to 'auto' gravity instead of 'north' if no faces are detected.
+<img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-fontstyle.png">
 
-* body:face - Automatically detect the largest body in an image and aim to make it the center of the cropped image. Defaults to the 'face' gravity if a full body was not detected
+* font-size (Shown below: font-size of 10).
 
-<img src="http://res.cloudinary.com/demo/image/upload/c_fill,g_body,h_80,w_80/face_top.jpg">
+<img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-fontsize.png">
 
-* adv_face - Automatically detect the largest face in an image with the Advanced Facial Attribute Detection add-on and make it the focus of the transformation.
+* font-emphasis - Emphasis on text (bold, italic).
 
-<img src="http://res.cloudinary.com/demo/image/upload/c_thumb,g_adv_face,h_80,w_80/young_couple.jpg">
+<img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-fontemphasis.png">
 
-* adv_faces - Automatically detect all the faces in an image with the Advanced Facial Attribute Detection add-on and make them the focus of the transformation.
-
-<img src="http://res.cloudinary.com/demo/image/upload/c_thumb,g_adv_faces,h_80,w_80/young_couple.jpg">
-
-* custom:face - Same as the 'custom' gravity, but defaults to 'face' gravity if no custom coordinates are available.
-
-* custom:faces - Same as the 'custom' gravity, but defaults to 'faces' gravity if no custom coordinates are available.
-
-* custom:adv_face - Same as the 'custom' gravity, but defaults to 'adv_face' gravity if no custom coordinates are available.
-
-* custom:adv_faces	- Same as the 'custom' gravity, but defaults to 'adv_faces' gravity if no custom coordinates are available.
-
-# Resizing/cropping options
-### Please refer to the following: [Image-resizing guide](https://github.com/SharinPix/demo-apex/tree/image_crop_resize)
+* gravity - Position of text on image (north, south, east, west).
+<img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-gravity.png">
 
 
 
