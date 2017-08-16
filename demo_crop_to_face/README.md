@@ -37,5 +37,5 @@ Go to 'Setup' in your Salesforce organization instance. Find the Visualforce pag
 
 # For image resizing/cropping options, please refer to the following link:
 
-<a href="https://github.com/SharinPix/demo-apex/tree/image_crop_resize></a>
+https://github.com/SharinPix/demo-apex/tree/image_crop_resize
 
