@@ -69,9 +69,9 @@
                             
                     
                 } else if (event.type === 'exception') {
-                    alert(event.message);
+                    alert('Please click on an image before performing any image action.');
                 } else {
-                    alert(event);
+                    alert('Please click on an image before performing any image action.');
                 }
             }, 
             {escape: true}
