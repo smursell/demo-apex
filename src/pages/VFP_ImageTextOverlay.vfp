@@ -9,7 +9,8 @@
     
     eventer(messageEvent, function(e) {
         
-        console.log(e.origin);
+        console.log('Origin ->'+e.origin);
+        console.log('messageEvent ->'+messageEvent);
         
         if (e.origin === 'https://app.sharinpix.com') {
             
@@ -40,6 +41,9 @@
         var fontSize = document.getElementById("j_id0:j_id2:fontSizeInput").value;
         var fontEmphasis = document.getElementById("j_id0:j_id2:fontEmphasisInput").value;
         var gravity = document.getElementById("j_id0:j_id2:gravityInput").value;
+		var borderWidth = document.getElementById("j_id0:j_id2:borderWidthInput").value;
+        var borderStyle = document.getElementById("j_id0:j_id2:borderStyleInput").value;
+        var borderColor = document.getElementById("j_id0:j_id2:borderColorInput").value;
         
           
         Visualforce.remoting.Manager.invokeAction(
@@ -51,10 +55,13 @@
             fontSize,// size of font
             fontEmphasis,//font emphasis (bold or italic)
             gravity, //gravity
+            borderWidth, //border-width
+            borderStyle, //border-style
+            borderColor, //border-color
             
             function(result, event){
                 if (event.status) {
-                   
+                  
                     var WindowObjectReference = window.open(
                         result, 
                         "Image Overlay Text",
@@ -62,7 +69,7 @@
                             
                     
                 } else if (event.type === 'exception') {
-                    alert(event);
+                    alert(event.message);
                 } else {
                     alert(event);
                 }
@@ -98,6 +105,18 @@
         <!-- gravity section -->
         <apex:outputText style="font-style:italic" value="Gravity:"></apex:outputText>
         <apex:inputText value="{!gravity}" id="gravityInput"/>
+        
+        <!-- border-width section -->
+        <apex:outputText style="font-style:italic" value="Border-Width:"></apex:outputText>
+        <apex:inputText value="{!borderWidth}" id="borderWidthInput"/>
+        
+        <!-- border-style section -->
+        <apex:outputText style="font-style:italic" value="Border-Style:"></apex:outputText>
+        <apex:inputText value="{!borderStyle}" id="borderStyleInput"/>
+        
+        <!-- border-color section -->
+        <apex:outputText style="font-style:italic" value="Border-Color:"></apex:outputText>
+        <apex:inputText value="{!borderColor}" id="borderColorInput"/>
        
         <!-- Button to initiate cropping -->
         <apex:commandButton value="Overlay Text" onclick="overlayText()" reRender="nPbt" />

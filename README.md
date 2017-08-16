@@ -25,5 +25,17 @@ Go to an Account object. Edit its page layout and add the VisualPage 'VFP01_Imag
 * gravity - Position of text on image (north, south, east, west).
 <img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-gravity.png">
 
+* border width - width of border outline text
+
+* border style - style of border outlining text (solid etc..)
+
+* border color - color of border outlining text 
+
+* The image below refers to a text overlay having a border with width:5, style: solid, color:red
+
+
+
+
+
 
 
