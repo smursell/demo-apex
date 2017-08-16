@@ -1,0 +1,58 @@
+<apex:page controller="SharinPixCollageDemo">
+	<script>
+		let buttonClicked = function() {
+			window.location.hash = '';
+			let columns = document.getElementById('columns').value;
+			let rows = document.getElementById('rows').value;
+			let width = document.getElementById('width').value;
+			let height = document.getElementById('height').value;
+			let crop = document.getElementById('crop').value;
+			let background = document.getElementById('background').value;
+			Visualforce.remoting.Manager.invokeAction(
+				'{! $RemoteAction.SharinPixCollageDemo.generateCollage }',
+				columns, rows, width, height, crop, background,
+				function(res) {
+					document.getElementById('generated_images').innerHTML = '';
+					for (let i = 0; i < res.length; i++) {
+						document.getElementById('generated_images').innerHTML += '<div style="padding: 10px 20px"><h1 style="padding-bottom: 5px; display: block">Collage ' + (i+1) + '</h1><br /><img id="img' + i + '" src="' + res[i] + '" alt="collage" /></div>';
+						(function(index) {
+							setTimeout(function() {
+								document.getElementById('img'+index).addEventListener('load', function() {
+									window.location.hash = 'image_start';
+									document.getElementById('image_start').style.visibility = 'visible'
+								});
+							}, 10)
+						})(i)
+					}
+				}
+			);
+		}
+	</script>
+	<div style="padding: 10px 20px">
+		<apex:canvasApp developerName="Albums" height="500px" width="100%" parameters="{! parameters }" />
+	</div>
+	<div style="padding: 10px 20px">
+		<apex:form onsubmit="return false" id="main_form">
+			<h1>Generate Collage</h1><br /><br />
+			<input placeholder="columns" id="columns" type="number" /><br />
+			<input placeholder="rows" id="rows" type="number" /><br />
+			<input placeholder="width" id="width" type="number" /><br />
+			<input placeholder="height" id="height" type="number" /><br />
+			<select id="crop">
+				<option>fill</option>
+				<option>scale</option>
+				<option>pad</option>
+				<option>fit</option>
+				<option>crop</option>
+			</select><br />
+			<label for="background">Background color: </label>
+			<input value="#ffffff" type="color" id="background" /><br />
+			<apex:commandButton value="Generate" id="generate_button" onclick="return buttonClicked()" />
+		</apex:form>
+	</div>
+	<div id="image_start" style="padding: 5px 20px; visibility: hidden">
+		<a href="#">Back to top</a>
+	</div>
+	<div id="generated_images">
+	</div>
+</apex:page>
