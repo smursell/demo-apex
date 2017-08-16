@@ -1,7 +1,7 @@
 
 # Image Face Crop
 
-Go to 'Setup' in your Salesforce organization instance. Find the Visualforce page named 'VFP01_CropFace' in the Visual Pages Section. Preview the Visualforce page. Once on the page, click on an image to define the image cropping configurations. Set a width, height ,crop type('crop'), radius('max') and gravity, then click on the 'Crop' button.
+Go to an Account object. Edit its page layout and add the VisualPage 'VFP01_CropFace.vfp' to a new section. Remember to set its size to 500px.
 
 ## Explaining the gravity parameters options
 
