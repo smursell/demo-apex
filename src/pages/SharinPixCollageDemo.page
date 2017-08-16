@@ -38,7 +38,7 @@
 			<input placeholder="rows" id="rows" type="number" /><br />
 			<input placeholder="width" id="width" type="number" /><br />
 			<input placeholder="height" id="height" type="number" /><br />
-			<select id="crop">
+			<label for="crop">Crop type:</label><select id="crop">
 				<option>fill</option>
 				<option>scale</option>
 				<option>pad</option>
