@@ -1,7 +1,8 @@
 
 # Making image mashup/collage of all images in album
 
-Below is an example of a resulting collage
+Below is an example of a resulting collage.
+
 <img src="https://raw.githubusercontent.com/Akhilesh05/img/master/collage.jpg">
 
 For this demo, you need to open the Visualforce page named 'SharinPixCollageDemo'.
