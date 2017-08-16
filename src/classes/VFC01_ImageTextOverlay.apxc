@@ -1,31 +1,22 @@
-global class VFC01_CropFace {
-		
+global class VFC01_ImageTextOverlay {
+	
     public String parameters{get;set;}
-    public Integer height{set;get;}
-    public Integer width{set;get;}
-    public String crop{get;set;}
-    public String gravity{set;get;}
-    public String radius{get;set;}
     public String id{get;set;}
     private sharinpix.Utils utils;
-    public List<Object> listExtUrl{set;get;}
-    public String imageId{set;get;}
-    public Object listLength {set;get;}
-  
-    public List<Object> valueList {set;get;}
-    
-    
-    
-    
     public String extUrl {get;set;}
     
-    public VFC01_CropFace(ApexPages.standardController controller){
+    public String text {set;get;}
+    public String fontStyle {set;get;}
+    public String fontSize {set;get;}
+    public String fontEmphasis {set;get;}
+    public String gravity {set;get;}
+	
+
+	public VFC01_ImageTextOverlay(ApexPages.standardController controller){
         
         utils = new sharinpix.Utils();
         
-        //Hard-coded values for test
         id = controller.getId();
-        //imageId = '03c0faae-5e4b-4bdd-a434-8722f51e5052';
 
         map<string, boolean> access = new map<string, boolean>();
         
@@ -53,15 +44,14 @@ global class VFC01_CropFace {
         parameters = JSON.serialize(params);
 
     }//end constructor
-	
-    @RemoteAction
-    global static String cropFace(String imageId, Integer width, Integer height, String crop, String gravity, String radius){
+
+	@RemoteAction
+    global static String overlayText(String imageId, String text, String fontStyle, String fontSize, String fontEmphasis, String gravity){
 
         
         //Getting all configuration paramseters
-        ImageFaceCrop ifc = new ImageFaceCrop();
-        return ifc.cropFace(imageId, width, height, crop, gravity, radius);
-    }//end cropFace
-             
-    
-}//end class VFC01_CropFace
+        ImageTextOverlay ito = new ImageTextOverlay();
+        return ito.overlayText(imageId, text, fontStyle, fontSize, fontEmphasis, gravity);
+        
+    }//end overlayText    
+}//end class

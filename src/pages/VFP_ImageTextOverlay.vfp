@@ -1,17 +1,24 @@
-<apex:page standardController="Account" extensions="VFC01_CropFace">
+<apex:page standardController="Account" extensions="VFC01_ImageTextOverlay">
    
     <script>
+    
     var latestImageViewed;
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
     var eventer = window[eventMethod];
     var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    
     eventer(messageEvent, function(e) {
+        
         console.log(e.origin);
+        
         if (e.origin === 'https://app.sharinpix.com') {
             
             let data = e.data;
+            
             console.log('data', e.data);
+            
             switch (data.name) {
+                    
                 case 'viewer-image-viewed':
                     latestImageViewed = data.payload.image.public_id;
                     
@@ -19,35 +26,38 @@
                     break;
                 case 'viewer-closed':
                     latestImageViewed = null;
-            }
-        }
+            }//end switch
+            
+        }//end if
+        
     }, false);
     
-    //CROPPING
-    function cropFace(){
+    //OverlayText
+    function overlayText(){
         
-        var height = document.getElementById("j_id0:j_id2:heightInput").value;
-        var width = document.getElementById("j_id0:j_id2:widthInput").value;
-        var crop = document.getElementById("j_id0:j_id2:cropInput").value;
+        var text = document.getElementById("j_id0:j_id2:textInput").value;
+        var fontStyle = document.getElementById("j_id0:j_id2:fontStyleInput").value;
+        var fontSize = document.getElementById("j_id0:j_id2:fontSizeInput").value;
+        var fontEmphasis = document.getElementById("j_id0:j_id2:fontEmphasisInput").value;
         var gravity = document.getElementById("j_id0:j_id2:gravityInput").value;
-        var radius = document.getElementById("j_id0:j_id2:radiusInput").value;
         
           
         Visualforce.remoting.Manager.invokeAction(
 
-            '{!$RemoteAction.VFC01_CropFace.cropFace}',
+            '{!$RemoteAction.VFC01_ImageTextOverlay.overlayText}',
             latestImageViewed,
-            width,
-            height,//height
-            crop,
-            gravity,//gravity
-            radius, //radius
+            text,//text
+            fontStyle,//style
+            fontSize,// size of font
+            fontEmphasis,//font emphasis (bold or italic)
+            gravity, //gravity
+            
             function(result, event){
                 if (event.status) {
                    
                     var WindowObjectReference = window.open(
                         result, 
-                        "Face Crop",
+                        "Image Overlay Text",
                             "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
                             
                     
@@ -68,28 +78,29 @@
     
     
     <apex:form >
-        <!-- height section -->
-        <apex:outputText style="font-style:italic" value="Height:"></apex:outputText>
-        <apex:inputText value="{!height}" id="heightInput"/>
         
-        <!-- width section -->
-        <apex:outputText style="font-style:italic" value="Width:"></apex:outputText>
-        <apex:inputText value="{!width}" id="widthInput"/>
+        <!-- text to-be-displayed section -->
+        <apex:outputText style="font-style:italic" value="Text:"></apex:outputText>
+        <apex:inputText value="{!text}" id="textInput"/>
         
-        <!-- crop section -->
-        <apex:outputText style="font-style:italic" value="Crop:"></apex:outputText>
-        <apex:inputText value="{!crop}" id="cropInput"/>
+        <!-- font-style section -->
+        <apex:outputText style="font-style:italic" value="Font Style:"></apex:outputText>
+        <apex:inputText value="{!fontStyle}" id="fontStyleInput"/>
+        
+        <!-- font-size section -->
+        <apex:outputText style="font-style:italic" value="Font-size:"></apex:outputText>
+        <apex:inputText value="{!fontSize}" id="fontSizeInput"/>
+        
+        <!--  section font-emphasis-->
+        <apex:outputText style="font-style:italic" value="Font emphasis:"></apex:outputText>
+        <apex:inputText value="{!fontEmphasis}" id="fontEmphasisInput"/>
         
         <!-- gravity section -->
         <apex:outputText style="font-style:italic" value="Gravity:"></apex:outputText>
         <apex:inputText value="{!gravity}" id="gravityInput"/>
-        
-        <!-- radius section -->
-        <apex:outputText style="font-style:italic" value="Radius:"></apex:outputText>
-        <apex:inputText value="{!radius}" id="radiusInput"/>
-        
+       
         <!-- Button to initiate cropping -->
-        <apex:commandButton value="Crop face" onclick="cropFace()" reRender="nPbt" />
+        <apex:commandButton value="Overlay Text" onclick="overlayText()" reRender="nPbt" />
         
     </apex:form>
     
