@@ -35,7 +35,8 @@ Go to 'Setup' in your Salesforce organization instance. Find the Visualforce pag
 
 * custom:adv_faces	- Same as the 'custom' gravity, but defaults to 'adv_faces' gravity if no custom coordinates are available.
 
-# For image resizing/cropping options, please refer to the following link:
+# Resizing/cropping options
+### Please refer to the following: [Image-resizing guide](https://github.com/SharinPix/demo-apex/tree/image_crop_resize)
 
-https://github.com/SharinPix/demo-apex/tree/image_crop_resize
+
 
