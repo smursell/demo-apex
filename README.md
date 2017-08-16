@@ -29,5 +29,5 @@ For this scenario, let's assume the image new width and height are 100 x 150.
 
 <img src="https://raw.githubusercontent.com/Akhilesh05/img/master/thumb.jpg">
 
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image-resize)
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image_crop_resize)
 
