@@ -38,5 +38,7 @@ Go to an Account object. Edit its page layout and add the VisualPage 'VFP01_Crop
 # Resizing/cropping options
 ### Please refer to the following: [Image-resizing guide](https://github.com/SharinPix/demo-apex/tree/image_crop_resize)
 
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=crop_to_face)
+
 
 
