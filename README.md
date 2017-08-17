@@ -34,6 +34,8 @@ Go to an Account object. Edit its page layout and add the VisualForcePage 'VFP01
 * The image below refers to a text overlay having a border with width (5), style (solid), color (red)
 <img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-border.png">
 
+###Please note that this document is as up-to-date as when it was last modified/published. For a more up-to-date and extensive coverage of the different parameters and their respective values, feel free to browse through the official cloudinary API reference: <a href="http://cloudinary.com/documentation/image_upload_api_reference#example">API Reference</a>
+
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image_text_overlay)
 
 
