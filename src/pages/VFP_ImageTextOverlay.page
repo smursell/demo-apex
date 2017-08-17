@@ -19,16 +19,16 @@
         }//end if
     }, false);
 
-    //OverlayText
+    //OverlayText  
     function overlayText(){   
-        var text = document.getElementById("j_id0:j_id2:textInput").value;
-        var fontStyle = document.getElementById("j_id0:j_id2:fontStyleInput").value;
-        var fontSize = document.getElementById("j_id0:j_id2:fontSizeInput").value;
-        var fontEmphasis = document.getElementById("j_id0:j_id2:fontEmphasisInput").value;
-        var gravity = document.getElementById("j_id0:j_id2:gravityInput").value;
-		var borderWidth = document.getElementById("j_id0:j_id2:borderWidthInput").value;
-        var borderStyle = document.getElementById("j_id0:j_id2:borderStyleInput").value;
-        var borderColor = document.getElementById("j_id0:j_id2:borderColorInput").value;
+        var text = document.getElementById("textInput").value;
+        var fontStyle = document.getElementById("fontStyleInput").value;
+        var fontSize = document.getElementById("fontSizeInput").value;
+        var fontEmphasis = document.getElementById("fontEmphasisInput").value;
+        var gravity = document.getElementById("gravityInput").value;
+		var borderWidth = document.getElementById("borderWidthInput").value;
+        var borderStyle = document.getElementById("borderStyleInput").value;
+        var borderColor = document.getElementById("borderColorInput").value;
 
         Visualforce.remoting.Manager.invokeAction(
 
@@ -61,48 +61,42 @@
 
         }//end cropFace
     </script>
-    
-  
-    
-    
-    <apex:form >
         
         <!-- text to-be-displayed section -->
-        <apex:outputText style="font-style:italic" value="Text:"></apex:outputText>
-        <apex:inputText value="{!text}" id="textInput"/>
+        <p>Text:</p>
+        <input type="text" id="textInput"/>
         
         <!-- font-style section -->
-        <apex:outputText style="font-style:italic" value="Font Style:"></apex:outputText>
-        <apex:inputText value="{!fontStyle}" id="fontStyleInput"/>
+        <p>Font-Style:</p>
+        <input type="text" id="fontStyleInput"/>
         
         <!-- font-size section -->
-        <apex:outputText style="font-style:italic" value="Font-size:"></apex:outputText>
-        <apex:inputText value="{!fontSize}" id="fontSizeInput"/>
+        <p>Font-Size:</p>
+        <input type="number" id="fontSizeInput"/>
         
         <!--  section font-emphasis-->
-        <apex:outputText style="font-style:italic" value="Font emphasis:"></apex:outputText>
-        <apex:inputText value="{!fontEmphasis}" id="fontEmphasisInput"/>
+       <p>Font-Emphasis:</p>
+        <input type="text" id="fontEmphasisInput"/>
         
         <!-- gravity section -->
-        <apex:outputText style="font-style:italic" value="Gravity:"></apex:outputText>
-        <apex:inputText value="{!gravity}" id="gravityInput"/>
+        <p>Gravity:</p>
+        <input type="text" id="gravityInput"/>
         
         <!-- border-width section -->
-        <apex:outputText style="font-style:italic" value="Border-Width:"></apex:outputText>
-        <apex:inputText value="{!borderWidth}" id="borderWidthInput"/>
+        <p>Border-Width:</p>
+        <input type="text" id="borderWidthInput"/>
         
         <!-- border-style section -->
-        <apex:outputText style="font-style:italic" value="Border-Style:"></apex:outputText>
-        <apex:inputText value="{!borderStyle}" id="borderStyleInput"/>
+        <p>Border-Style:</p>
+        <input type="text" id="borderStyleInput"/>
         
         <!-- border-color section -->
-        <apex:outputText style="font-style:italic" value="Border-Color:"></apex:outputText>
-        <apex:inputText value="{!borderColor}" id="borderColorInput"/>
+        <p>Border-Color:</p>
+        <input type="text" id="borderColorInput"/>
        
         <!-- Button to initiate cropping -->
-        <apex:commandButton value="Overlay Text" onclick="overlayText()" reRender="nPbt" />
-        
-    </apex:form>
+        <button onclick="overlayText()">Overlay Text</button>
+    
     
     <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
     

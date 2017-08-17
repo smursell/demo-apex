@@ -1,6 +1,5 @@
 public class ImageTextOverlay {
     private sharinpix.Utils utils;
-    private String imgExtUrl{get;set;}
     
     public ImageTextOverlay(){
         utils = new sharinpix.Utils();
