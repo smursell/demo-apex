@@ -34,6 +34,9 @@ Go to an Account object. Edit its page layout and add the VisualPage 'VFP01_Imag
 * The image below refers to a text overlay having a border with width (5), style (solid), color (red)
 <img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-border.png">
 
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image_text_overlay)
+
+
 
 
 
