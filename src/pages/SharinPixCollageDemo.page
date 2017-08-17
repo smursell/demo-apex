@@ -5,7 +5,19 @@
             visibility: hidden;
         }
         .padded {
-            padding: 10px 20px;
+            padding: 10px 20px !important;
+        }
+        .image-padded {
+            display: inline-block;
+            padding-bottom: 20px;
+            padding-right: 20px;
+        }
+        #collage-h1 {
+            display: none;
+        }
+        .h1 {
+            display: block;
+            font-size: 2em !important;
         }
     </style>
     <script>
@@ -21,9 +33,10 @@
                 '{! $RemoteAction.SharinPixCollageDemo.generateCollage }',
                 '{! albumId }', columns, rows, width, height, crop, background,
                 function(res) {
+                    document.getElementById('collage-h1').style.display = 'block';
                     document.getElementById('generated_images').innerHTML = '';
                     for (var i = 0; i < res.length; i++) {
-                        document.getElementById('generated_images').innerHTML += '<div class="padded"><h1 style="padding-bottom: 5px; display: block">Collage ' + (i+1) + '</h1><br /><img id="img' + i + '" src="' + res[i] + '" alt="collage" /></div>';
+                        document.getElementById('generated_images').innerHTML += '<div class="image-padded"><img id="img' + i + '" src="' + res[i] + '" alt="collage" /></div>';
                         document.getElementById('img'+i).addEventListener('load', function() {
                             window.location.hash = 'image_start';
                             document.getElementById('image_start').style.visibility = 'visible'
@@ -37,27 +50,66 @@
         <apex:canvasApp developerName="Albums" height="500px" width="100%" parameters="{! parameters }" />
     </div>
     <div class="padded">
-        <form onsubmit="return false" id="main_form">
-            <h1>Generate Collage</h1><br /><br />
-            <input placeholder="columns" id="columns" type="number" /><br />
-            <input placeholder="rows" id="rows" type="number" /><br />
-            <input placeholder="width" id="width" type="number" /><br />
-            <input placeholder="height" id="height" type="number" /><br />
-            <label for="crop">Crop type:</label><select id="crop">
-                <option>fill</option>
-                <option>scale</option>
-                <option>pad</option>
-                <option>fit</option>
-                <option>crop</option>
-            </select><br />
-            <label for="background">Background color: </label>
-            <input value="#ffffff" type="color" id="background" /><br />
-            <button id="generate_button" onclick="return buttonClicked()">Generate</button>
-        </form>
+        <div class="slds-grid slds-wrap slds-grid_pull-padded">
+            <div class="slds-p-horizontal_small slds-medium-size_1-of-2 slds-small-size_1-of-1">
+                <div class="slds-form slds-form_horizontal">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="columns">Columns in one collage</label>
+                        <div class="slds-form-element__control">
+                            <input type="number" id="columns" class="slds-input" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="rows">Rows in one collage</label>
+                        <div class="slds-form-element__control">
+                            <input type="number" id="rows" class="slds-input" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="width">Width of each image</label>
+                        <div class="slds-form-element__control">
+                            <input type="number" id="width" class="slds-input" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="height">Height of each image</label>
+                        <div class="slds-form-element__control">
+                            <input type="number" id="height" class="slds-input" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="crop">Crop type</label>
+                        <div class="slds-form-element__control">
+                            <div class="slds-select_container">
+                                <select class="slds-select" id="crop">
+                                    <option>fill</option>
+                                    <option>scale</option>
+                                    <option>pad</option>
+                                    <option>fit</option>
+                                    <option>crop</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="background">Background color</label>
+                        <div class="slds-form-element__control">
+                            <input type="color" id="background" class="slds-input" value="#ffffff" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <button id="generate_button" onclick="buttonClicked()" class="slds-button slds-button_brand">Generate Collage</button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-p-horizontal_small slds-medium-size_2-of-2 slds-small-size_1-of-1"></div>
+        </div>
     </div>
     <div id="image_start">
         <a href="#">Back to top</a>
     </div>
-    <div id="generated_images">
+    <h1 id="collage-h1" class="padded h1">Collage generated</h1>
+    <div id="generated_images" class="padded">
     </div>
+    <apex:slds />
 </apex:page>
