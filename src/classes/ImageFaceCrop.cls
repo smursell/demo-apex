@@ -1,17 +1,10 @@
 public class ImageFaceCrop {
-    
     private sharinpix.Utils utils;
     private String imgExtUrl{get;set;}
-   
     
-    public ImageFaceCrop(){
-        
+    public ImageFaceCrop(){    
         utils = new sharinpix.Utils();
-             
     }//end constructor
-    
-    //Getter/Setter for imgExtUrl
-    
     
     /**
      *Description: Crops human face found in image
@@ -26,7 +19,6 @@ public class ImageFaceCrop {
      * ---------------------------------
      * @return  URL of transformed image
      */
-    
     public String cropFace(String imageId){
         
          imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
@@ -44,11 +36,9 @@ public class ImageFaceCrop {
                                 'height' => 200
                             }
                         }).get('resource_url');
-        
         return imgExtUrl;
     }//end method cropFace(:imageId)
-    
-    
+
      /**
      *Description: Crops human face found in image
      * ---------------------------------
@@ -64,9 +54,7 @@ public class ImageFaceCrop {
      */
     
     public String cropFace(String imageId, Integer width, Integer height){
-        
          return cropFace(imageId, width, height, 'crop', 'face', 'max');
-        
     }//end method cropFace(:imageId, width, height)
     
    	 /**
@@ -102,11 +90,4 @@ public class ImageFaceCrop {
         
         return imgExtUrl;
     }//end method cropFace(:imageId, width, height, crop, gravity, radius)
-    
-    
-    
-    
-       
-
-    
 }//end ImageFaceCrop
