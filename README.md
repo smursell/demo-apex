@@ -1,12 +1,12 @@
 
 # Image Text Overlay
 
-Go to an Account object. Edit its page layout and add the VisualPage 'VFP01_ImageTextOverlay.vfp' to a new section. Remember to set its size to 500px.
+Go to an Account object. Edit its page layout and add the VisualForcePage 'VFP01_ImageTextOverlay.vfp' to a new section. Remember to set its size to 500px.
 
 ## Explaining the parameter options for text overlay
 
 
-* Text - The textual content that will overlaid on the image.
+* Text - The textual content that will be overlaid on the image.
 
 <img src="https://github.com/SharinPix/demo-apex/blob/image_text_overlay/assets/clara-text.png">
 
