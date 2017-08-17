@@ -1,41 +1,26 @@
 <apex:page standardController="Account" extensions="VFC01_ImageTextOverlay">
-   
     <script>
-    
     var latestImageViewed;
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
     var eventer = window[eventMethod];
     var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-    
     eventer(messageEvent, function(e) {
-        
-        console.log('Origin ->'+e.origin);
-        console.log('messageEvent ->'+messageEvent);
-        
+
         if (e.origin === 'https://app.sharinpix.com') {
-            
-            let data = e.data;
-            
-            console.log('data', e.data);
-            
+            var data = e.data;
+
             switch (data.name) {
-                    
                 case 'viewer-image-viewed':
                     latestImageViewed = data.payload.image.public_id;
-                    
-                   
                     break;
                 case 'viewer-closed':
                     latestImageViewed = null;
             }//end switch
-            
         }//end if
-        
     }, false);
-    
+
     //OverlayText
-    function overlayText(){
-        
+    function overlayText(){   
         var text = document.getElementById("j_id0:j_id2:textInput").value;
         var fontStyle = document.getElementById("j_id0:j_id2:fontStyleInput").value;
         var fontSize = document.getElementById("j_id0:j_id2:fontSizeInput").value;
@@ -44,8 +29,7 @@
 		var borderWidth = document.getElementById("j_id0:j_id2:borderWidthInput").value;
         var borderStyle = document.getElementById("j_id0:j_id2:borderStyleInput").value;
         var borderColor = document.getElementById("j_id0:j_id2:borderColorInput").value;
-        
-          
+
         Visualforce.remoting.Manager.invokeAction(
 
             '{!$RemoteAction.VFC01_ImageTextOverlay.overlayText}',
@@ -65,9 +49,7 @@
                     var WindowObjectReference = window.open(
                         result, 
                         "Image Overlay Text",
-                            "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
-                            
-                    
+                            "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");  
                 } else if (event.type === 'exception') {
                     alert('Please click on an image before performing any image action.');
                 } else {
@@ -78,7 +60,6 @@
         );
 
         }//end cropFace
-  
     </script>
     
   
