@@ -1,6 +1,5 @@
 public with sharing class SharinPixCollageDemo {
     public String parameters {get; set;}
-    public static SharinPix.Utils sharinPixUtils = new SharinPix.Utils();
     public static String albumId {get; set;}
 
     static {
@@ -24,6 +23,7 @@ public with sharing class SharinPixCollageDemo {
 
     @RemoteAction
     public static List<String> generateCollage(String albumId, Integer columns, Integer rows, Integer widthLength, Integer heightLength, String cropType, String background) {
+        SharinPix.Utils sharinPixUtils = new SharinPix.Utils();
         List<Object> images = sharinPixUtils.getAlbumImages(albumId);
         List<String> imagePublicIds = new List<String>();
         for (Object imageObj: images) {
