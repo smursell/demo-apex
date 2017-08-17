@@ -19,18 +19,18 @@
 
     //CROPPING
     function cropFace(){
-        var height = document.getElementById("j_id0:j_id2:heightInput").value;
-        var width = document.getElementById("j_id0:j_id2:widthInput").value;
-        var crop = document.getElementById("j_id0:j_id2:cropInput").value;
-        var gravity = document.getElementById("j_id0:j_id2:gravityInput").value;
-        var radius = document.getElementById("j_id0:j_id2:radiusInput").value;
+        var height = document.getElementById("heightInput").value;
+        var width = document.getElementById("widthInput").value;
+        var crop = document.getElementById("cropInput").value;
+        var gravity = document.getElementById("gravityInput").value;
+        var radius = document.getElementById("radiusInput").value;
 
         Visualforce.remoting.Manager.invokeAction(
             '{!$RemoteAction.CropFaceController.cropFace}',
             latestImageViewed,
-            width,
+            width,//width
             height,//height
-            crop,
+            crop,//crop option
             gravity,//gravity
             radius, //radius
             function(result, event){
@@ -39,9 +39,8 @@
                     var WindowObjectReference = window.open(
                         result, 
                         "Face Crop",
-                            "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
-                            
-                    
+                        "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"
+                        );  
                 } else if (event.type === 'exception') {
                     alert(event);
                 } else {
@@ -53,24 +52,23 @@
         }//end cropFace
     </script>
 
-    <apex:form >
         <!-- height section -->
-        <apex:outputText style="font-style:italic" value="Height:"></apex:outputText>
-        <apex:inputText value="{!height}" id="heightInput"/>
+        <p>Height:</p>
+        <input type="number" id="heightInput"/>
         <!-- width section -->
-        <apex:outputText style="font-style:italic" value="Width:"></apex:outputText>
-        <apex:inputText value="{!width}" id="widthInput"/>
+        <p>Width:</p>
+        <input type="number" id="widthInput"/>
         <!-- crop section -->
-        <apex:outputText style="font-style:italic" value="Crop:"></apex:outputText>
-        <apex:inputText value="{!crop}" id="cropInput"/>
+       <p>Crop:</p>
+        <input type="text" id="cropInput"/>
         <!-- gravity section -->
-        <apex:outputText style="font-style:italic" value="Gravity:"></apex:outputText>
-        <apex:inputText value="{!gravity}" id="gravityInput"/>        
+        <p>Gravity:</p>
+        <input type="text" id="gravityInput"/>        
         <!-- radius section -->
-        <apex:outputText style="font-style:italic" value="Radius:"></apex:outputText>
-        <apex:inputText value="{!radius}" id="radiusInput"/>
+        <p>Radius:</p>
+        <input type="text" id="radiusInput"/>
         <!-- Button to initiate cropping -->
-        <apex:commandButton value="Crop face" onclick="cropFace()" reRender="nPbt" />
-    </apex:form>
+        <button onclick="cropFace()">Crop Face</button>
+
     <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
 </apex:page>
