@@ -1,13 +1,13 @@
 
 # Image Face Crop
 
-Go to an Account object. Edit its page layout and add the VisualPage 'VFP01_CropFace.vfp' to a new section. Remember to set its size to 500px.
+Go to an Account object. Edit its page layout and add the VisualForcePage 'VFP01_CropFace.vfp' to a new section. Remember to set its size to 500px.
 
 ## Explaining the gravity parameters options
 
 ### Gravity
 
-* Face - Automatically detect the largest face in an image and aim to make it the center of the cropped image. Alternatively, use face coordinates specified by API if available. Defaults to the 'north' gravity if no face was detected.
+* Face - Automatically detects the largest face in an image and aims to make it the center of the cropped image. Alternatively, use face coordinates specified by API if available. Defaults to the 'north' gravity if no face was detected.
 
 <img src="http://res.cloudinary.com/demo/image/upload/c_crop,g_face,h_80,w_80/face_top.jpg">
 
