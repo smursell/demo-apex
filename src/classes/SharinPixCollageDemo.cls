@@ -1,12 +1,9 @@
 public with sharing class SharinPixCollageDemo {
-    public String parameters {get; set;}
-    public static String albumId {get; set;}
-
-    static {
-        albumId = 'c74c803b-62a6-4b41-b7d8-7e7e14503dae';
-    }
+    public String parameters {get; private set;}
+    public String albumId {get; private set;}
 
     public SharinPixCollageDemo() {
+        albumId = 'SharinPixCollageDemo';
         parameters = JSON.serialize(new Map<String, Object> {
             'abilities' => new Map<String, Object> {
                 albumId => new Map<String, Object> {
