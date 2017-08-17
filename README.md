@@ -38,7 +38,7 @@ Go to an Account object. Edit its page layout and add the VisualForcePage 'VFP01
 # Resizing/cropping options
 ### Please refer to the following: [Image-resizing guide](https://github.com/SharinPix/demo-apex/tree/image_crop_resize)
 
-###Please note that this document is as up-to-date as when it was last modified/published. For a more up-to-date and extensive coverage of the different parameters and their respective values, feel free to browse through the official cloudinary API reference: <a href="http://cloudinary.com/documentation/image_upload_api_reference#example">API Reference</a>
+### Please note that this document is as up-to-date as when it was last modified/published. For a more up-to-date and extensive coverage of the different parameters and their respective values, feel free to browse through the official cloudinary API reference: <a href="http://cloudinary.com/documentation/image_upload_api_reference#example">API Reference</a>
 
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=crop_face_image)
 
