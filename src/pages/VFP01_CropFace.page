@@ -1,4 +1,4 @@
-<apex:page standardController="Account" extensions="VFC01_CropFace">
+<apex:page standardController="Account" extensions="CropFaceController">
    
     <script>
     var latestImageViewed;
@@ -35,7 +35,7 @@
           
         Visualforce.remoting.Manager.invokeAction(
 
-            '{!$RemoteAction.VFC01_CropFace.cropFace}',
+            '{!$RemoteAction.CropFaceController.cropFace}',
             latestImageViewed,
             width,
             height,//height
