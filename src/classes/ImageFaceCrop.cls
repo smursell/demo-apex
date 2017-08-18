@@ -24,14 +24,14 @@ public class ImageFaceCrop {
                 'download' => true,
                 'auto' => false,
                 'full_size' => false
-                },
+            },
             'transformations' => new Map<String, Object> {
                 'crop' => 'crop',
                 'gravity' => 'face',
                 'radius' => 'max',
                 'width' => 200,
                 'height' => 200
-                }
+            }
         }).get('resource_url');
         return imgExtUrl;
     }
