@@ -1,6 +1,6 @@
 global class VFC01_ImageTextOverlay {
     public String parameters {get;set;}
-    public String albumId {get;set;}
+    public Id albumId {get;set;}
     private sharinpix.Utils utils;
     public String extUrl {get;set;}
     public String text {set;get;}
