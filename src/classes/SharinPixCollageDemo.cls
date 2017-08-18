@@ -18,8 +18,20 @@ public with sharing class SharinPixCollageDemo {
         });
     }
 
+    /**
+     * This method generates a collage from all the images of an album.
+     * 
+     * @param albumId The album ID of the album that will be used to generate the collage
+     * @param columns The number of columns that a collage will contain
+     * @param rows The number of rows that a collage will contain
+     * @param width The width of each image in the collage
+     * @param height The height of each image in the collage
+     * @param cropType The crop type that will be used for this collage
+     * @param background The background color that will be used for the collage
+     * @return Returns the list of collage URLs generated
+     */
     @RemoteAction
-    public static List<String> generateCollage(String albumId, Integer columns, Integer rows, Integer widthLength, Integer heightLength, String cropType, String background) {
+    public static List<String> generateCollage(String albumId, Integer columns, Integer rows, Integer width, Integer height, String cropType, String background) {
         SharinPix.Utils sharinPixUtils = new SharinPix.Utils();
         List<Object> images = sharinPixUtils.getAlbumImages(albumId);
         List<String> imagePublicIds = new List<String>();
@@ -38,8 +50,8 @@ public with sharing class SharinPixCollageDemo {
                     'id' => currentId,
                     'transformation' => new List<Map<String, Object>> {
                         new Map<String, Object> {
-                            'width' => widthLength,
-                            'height' => heightLength,
+                            'width' => width,
+                            'height' => height,
                             'crop' => cropType,
                             'background' => background
                         }
@@ -49,11 +61,11 @@ public with sharing class SharinPixCollageDemo {
                 List<Map<String, Object>> transformation = (List<Map<String, Object>>) imageParams.get(pic).get('transformation');
                 transformation.add(new Map<String, Object> {
                     'overlay' => currentId,
-                    'width' => widthLength,
-                    'height' => heightLength,
+                    'width' => width,
+                    'height' => height,
                     'crop' => cropType,
-                    'x' => column * widthLength,
-                    'y' => row * heightLength,
+                    'x' => column * width,
+                    'y' => row * height,
                     'background' => background,
                     'gravity' => 'north_west'
                 });

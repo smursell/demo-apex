@@ -1,4 +1,5 @@
 <apex:page controller="SharinPixCollageDemo">
+    <apex:slds />
     <style>
         #image_start {
             padding: 5px 20px;
@@ -32,15 +33,17 @@
             Visualforce.remoting.Manager.invokeAction(
                 '{! $RemoteAction.SharinPixCollageDemo.generateCollage }',
                 '{! albumId }', columns, rows, width, height, crop, background,
-                function(res) {
-                    document.getElementById('collage-h1').style.display = 'block';
-                    document.getElementById('generated_images').innerHTML = '';
-                    for (var i = 0; i < res.length; i++) {
-                        document.getElementById('generated_images').innerHTML += '<div class="image-padded"><img id="img' + i + '" src="' + res[i] + '" alt="collage" /></div>';
-                        document.getElementById('img'+i).addEventListener('load', function() {
-                            window.location.hash = 'image_start';
-                            document.getElementById('image_start').style.visibility = 'visible'
-                        });
+                function(res, event) {
+                    if (event.status) {
+                        document.getElementById('collage-h1').style.display = 'block';
+                        document.getElementById('generated_images').innerHTML = '';
+                        for (var i = 0; i < res.length; i++) {
+                            document.getElementById('generated_images').innerHTML += '<div class="image-padded"><img id="img' + i + '" src="' + res[i] + '" alt="collage" /></div>';
+                            document.getElementById('img'+i).addEventListener('load', function() {
+                                window.location.hash = 'image_start';
+                                document.getElementById('image_start').style.visibility = 'visible'
+                            });
+                        }
                     }
                 }
             );
@@ -111,5 +114,4 @@
     <h1 id="collage-h1" class="padded h1">Collage generated</h1>
     <div id="generated_images" class="padded">
     </div>
-    <apex:slds />
 </apex:page>
