@@ -39,7 +39,7 @@ global class VFC01_ImageTextOverlay {
             'Id' => albumId
             });
     }//end constructor
-    }//end constructor
+
 
 	@RemoteAction
     global static String overlayText(String imageId, String text, String fontStyle, String fontSize, String fontEmphasis, String gravity, String borderWidth, String borderStyle, String borderColor){
