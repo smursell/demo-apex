@@ -1,5 +1,5 @@
 global class CropFaceController {
-    public String albumId {get;set;}
+    public Id albumId {get;set;}
     private sharinpix.Utils utils;
     public String parameters {get;set;}
 
