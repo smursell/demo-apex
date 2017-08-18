@@ -10,6 +10,6 @@ Fill in the fields.
 You may add more URLs by clicking on the `Add URL` button.
 Once done, click on `Upload`.
 
-<b>Note: </b> Each URL is sent individually to the Apex controller for upload. (Multiple requests)
+**Note:** Each URL is sent individually to the Apex controller for upload. (Multiple requests)
 
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=upload_by_url)
