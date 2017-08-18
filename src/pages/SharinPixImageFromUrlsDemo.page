@@ -29,6 +29,9 @@
     }
     #success-div {
         display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
     }
     </style>
     <div class="slds-scope" id="main">
@@ -109,7 +112,7 @@
                         $alert.style.display = 'block';
                         setTimeout(function() {
                             $alert.style.display = 'none';
-                        }, 3000)
+                        }, 4000)
                     }
                 }
             )
