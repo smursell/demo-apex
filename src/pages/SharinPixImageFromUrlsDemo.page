@@ -1,14 +1,68 @@
 <apex:page controller="SharinPixImageFromUrlsDemo">
+    <apex:slds />
     <script>
     function generateUrlInput(index) {
-        return '<div class="padding-top slds-form-element"><label class="slds-form-element__label">'+
-        'URL number ' + (index+1) + '</label><div class="slds-grid slds-wrap slds-grid_pull-padded">'+
-        '<div class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-siz'+
-        'e_4-of-12"><div class="slds-form-element__control"><input type="text" id="input-filename-' + index +
-        '" class="slds-input" placeholder="Filename" /></div></div><div class="slds-p-horizontal_small'+
-        ' slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_8-of-12"><div class="slds-form-element_'+
-        '_control"><input type="text" id="input-url-' + (index) + '" class="slds-input" placeholder='+
-        '"URL" /></div></div></div></div>'
+        return '\
+            <div class="padding-top slds-form-element">\
+                <label class="slds-form-element__label">URL number ' + (index+1) + '</label>\
+                <div class="slds-grid slds-wrap slds-grid_pull-padded">\
+                    <div class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12">\
+                        <div class="slds-form-element__control">\
+                            <input type="text" id="input-filename-' + index + '" class="slds-input" placeholder="Filename" />\
+                        </div>\
+                    </div>\
+                    <div class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_8-of-12">\
+                        <div class="slds-form-element__control">\
+                            <input type="text" id="input-url-' + index + '" class="slds-input" placeholder="URL" />\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>'
+    }
+    var isEmpty = function(string) {
+        return !string || string === '';
+    };
+    var addUrl = function() {
+        var $urls = document.getElementById('urls');
+        if ($urls.childElementCount <= 10) {
+            var values = [];
+            for (var index = 1; index < $urls.childElementCount; index++) {
+                var filename = document.getElementById('input-filename-' + (index-1)).value;
+                var url = document.getElementById('input-url-' + (index-1)).value;
+                values.push({filename: filename, url: url});
+            }
+            var urlInputHtml = generateUrlInput($urls.childElementCount - 1);
+            $urls.innerHTML += urlInputHtml;
+            for (var index = 1; index < $urls.childElementCount - 1; index++) {
+                document.getElementById('input-filename-' + (index-1)).value = values[index-1].filename;
+                document.getElementById('input-url-' + (index-1)).value = values[index-1].url;
+            }
+        }
+    };
+    var uploadAll = function() {
+        var $urls = document.getElementById('urls');
+        for (var index = 1; index < $urls.childElementCount; index++) {
+            var albumId = document.getElementById('input-album-id').value;
+            var filename = document.getElementById('input-filename-' + (index-1)).value;
+            var url = document.getElementById('input-url-' + (index-1)).value;
+            if (isEmpty(albumId) || isEmpty(url) || isEmpty(filename)) {
+                alert('Fill all fields appropriately.');
+                continue;
+            }
+            Visualforce.remoting.Manager.invokeAction(
+                '{! $RemoteAction.SharinPixImageFromUrlsDemo.uploadByUrls }',
+                albumId, url, filename,
+                function(res, event) {
+                    if (event.status) {
+                        $alert = document.getElementById('success-div');
+                        $alert.style.display = 'block';
+                        setTimeout(function() {
+                            $alert.style.display = 'none';
+                        }, 4000)
+                    }
+                }
+            )
+        }
     }
     </script>
     <style>
@@ -72,52 +126,4 @@
             </div>
         </div>
     </div>
-    <script>
-    var isEmpty = function(string) {
-        return string === '';
-    };
-    var addUrl = function() {
-        var $urls = document.getElementById('urls');
-        if ($urls.childElementCount <= 10) {
-            var values = [];
-            for (var index = 1; index < $urls.childElementCount; index++) {
-                var filename = document.getElementById('input-filename-' + (index-1)).value;
-                var url = document.getElementById('input-url-' + (index-1)).value;
-                values.push({filename: filename, url: url});
-            }
-            var urlInputHtml = generateUrlInput($urls.childElementCount - 1);
-            $urls.innerHTML += urlInputHtml;
-            for (var index = 1; index < $urls.childElementCount - 1; index++) {
-                document.getElementById('input-filename-' + (index-1)).value = values[index-1].filename;
-                document.getElementById('input-url-' + (index-1)).value = values[index-1].url;
-            }
-        }
-    };
-    var uploadAll = function() {
-        var $urls = document.getElementById('urls');
-        for (var index = 1; index < $urls.childElementCount; index++) {
-            var albumId = document.getElementById('input-album-id').value;
-            var filename = document.getElementById('input-filename-' + (index-1)).value;
-            var url = document.getElementById('input-url-' + (index-1)).value;
-            if (!albumId || !url || !filename || isEmpty(albumId) || isEmpty(url) || isEmpty(filename)) {
-                alert('Fill all fields appropriately.');
-                return;
-            }
-            Visualforce.remoting.Manager.invokeAction(
-                '{! $RemoteAction.SharinPixImageFromUrlsDemo.uploadByUrls }',
-                albumId, url, filename,
-                function(res) {
-                    if (res) {
-                        $alert = document.getElementById('success-div');
-                        $alert.style.display = 'block';
-                        setTimeout(function() {
-                            $alert.style.display = 'none';
-                        }, 4000)
-                    }
-                }
-            )
-        }
-    }
-    </script>
-    <apex:slds />
 </apex:page>
