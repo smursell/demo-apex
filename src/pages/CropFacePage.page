@@ -1,5 +1,5 @@
 <apex:page standardController="Account" extensions="CropFaceController">
-<apex:slds />
+<apex:slds/>
     <script>
     var latestImageViewed;
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
