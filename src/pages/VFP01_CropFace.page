@@ -1,0 +1,75 @@
+<apex:page standardController="Account" extensions="CropFaceController">
+    <script>
+    var latestImageViewed;
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function(e) {
+        if (e.origin === 'https://app.sharinpix.com') {
+            var data = e.data;
+            switch (data.name) {
+                case 'viewer-image-viewed':
+                    latestImageViewed = data.payload.image.public_id;
+                    console.log(latestImageViewed);
+                    break;
+                case 'viewer-closed':
+                    latestImageViewed = null;
+            }
+        }
+    }, false);
+
+    //CROPPING
+    function cropFace(){
+        var height = document.getElementById("heightInput").value;
+        var width = document.getElementById("widthInput").value;
+        var crop = document.getElementById("cropInput").value;
+        var gravity = document.getElementById("gravityInput").value;
+        var radius = document.getElementById("radiusInput").value;
+
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.CropFaceController.cropFace}',
+            latestImageViewed,
+            width,//width
+            height,//height
+            crop,//crop option
+            gravity,//gravity
+            radius, //radius
+            function(result, event){
+                if (event.status) {
+                   
+                    var WindowObjectReference = window.open(
+                        result, 
+                        "Face Crop",
+                        "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"
+                        );  
+                } else if (event.type === 'exception') {
+                    alert(event);
+                } else {
+                    alert(event);
+                }
+            }, 
+            {escape: true}
+        );
+        }//end cropFace
+    </script>
+
+        <!-- height section -->
+        <p>Height:</p>
+        <input type="number" id="heightInput"/>
+        <!-- width section -->
+        <p>Width:</p>
+        <input type="number" id="widthInput"/>
+        <!-- crop section -->
+       <p>Crop:</p>
+        <input type="text" id="cropInput"/>
+        <!-- gravity section -->
+        <p>Gravity:</p>
+        <input type="text" id="gravityInput"/>        
+        <!-- radius section -->
+        <p>Radius:</p>
+        <input type="text" id="radiusInput"/>
+        <!-- Button to initiate cropping -->
+        <button onclick="cropFace()">Crop Face</button>
+
+    <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
+</apex:page>
