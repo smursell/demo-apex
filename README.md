@@ -1,7 +1,7 @@
 
 # Image Text Overlay
 
-Go to an Account object. Edit its page layout and add the VisualForcePage 'VFP01_ImageTextOverlay.vfp' to a new section. Remember to set its size to 500px.
+Go to an Account object. Edit its page layout and add the VisualForcePage 'ImageTextOverlayPage.vfp' to a new section. Remember to set its size to 500px.
 
 ## Explaining the parameter options for text overlay
 
