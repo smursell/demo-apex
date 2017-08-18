@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="slds-form-element">
-            <button class="slds-button slds-button_brand" onclick="cropFace()">Button</button>
+            <button class="slds-button slds-button_brand" onclick="cropFace()">Crop Face</button>
         </div>
     </div>
     <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>

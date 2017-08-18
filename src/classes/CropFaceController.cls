@@ -32,9 +32,9 @@ global class CropFaceController {
     @RemoteAction
     global static String cropFace(String imageId, Integer width, Integer height, String options){
         Map<String, Object>  optionsMap = (Map<String, Object>) JSON.deserializeUntyped(options);
-        String crop = optionsMap.get('crop');
-        String gravity = optionsMap.get('gravity');    
-        String radius = optionsMap.get('radius');
+        String crop = (String)optionsMap.get('crop');
+        String gravity = (String)optionsMap.get('gravity');    
+        String radius = (String)optionsMap.get('radius');
         ImageFaceCrop ifc = new ImageFaceCrop();
         return ifc.cropFace(imageId, width, height, crop, gravity, radius);
     }
