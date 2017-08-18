@@ -45,31 +45,31 @@
         <div class="slds-form-element">
             <label class="slds-form-element__label" for="heightInput">Height</label>
             <div class="slds-form-element__control">
-                <input type="number" id="heightInput" class="slds-input" placeholder="200">
+                <input type="number" id="heightInput" class="slds-input" placeholder="200"/>
             </div>
         </div>
         <div class="slds-form-element">
             <label class="slds-form-element__label" for="widthInput">Width</label>
             <div class="slds-form-element__control">
-                <input type="number" id="widthInput" class="slds-input" placeholder="200">
+                <input type="number" id="widthInput" class="slds-input" placeholder="200"/>
             </div>
         </div>
         <div class="slds-form-element">
             <label class="slds-form-element__label" for="cropInput">Crop</label>
             <div class="slds-form-element__control">
-                <input type="text" id="cropInput" class="slds-input" placeholder="crop">
+                <input type="text" id="cropInput" class="slds-input" placeholder="crop"/>
             </div>
         </div>
         <div class="slds-form-element">
             <label class="slds-form-element__label" for="gravityInput">Gravity</label>
             <div class="slds-form-element__control">
-                <input type="text" id="gravityInput" class="slds-input" placeholder="face">
+                <input type="text" id="gravityInput" class="slds-input" placeholder="face"/>
             </div>
         </div>
         <div class="slds-form-element">
             <label class="slds-form-element__label" for="radiusInput">Radius</label>
             <div class="slds-form-element__control">
-                <input type="text" id="radiusInput" class="slds-input" placeholder="radius">
+                <input type="text" id="radiusInput" class="slds-input" placeholder="max"/>
             </div>
         </div>
         <div class="slds-form-element">
