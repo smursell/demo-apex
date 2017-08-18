@@ -19,7 +19,7 @@ public class ImageFaceCrop {
      * ---------------------------------
      * @return  URL of transformed image
      */
-    public String cropFace(Id imageId){
+    public String cropFace(String imageId){
          imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
                             'image_id' => imageId,
                             'sharinpix' => new Map<String, Object> {
@@ -52,7 +52,7 @@ public class ImageFaceCrop {
      * @return  URL of transformed image
      */
     
-    public String cropFace(Id imageId, Integer width, Integer height){
+    public String cropFace(String imageId, Integer width, Integer height){
          return cropFace(imageId, width, height, 'crop', 'face', 'max');
     }//end method cropFace(:imageId, width, height)
     
@@ -69,7 +69,7 @@ public class ImageFaceCrop {
      * @return  URL of transformed image
      */
     
-    public String cropFace(Id imageId, Integer width, Integer height, String crop, String gravity, String radius){    
+    public String cropFace(String imageId, Integer width, Integer height, String crop, String gravity, String radius){    
          imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
                             'image_id' => imageId,
                             'sharinpix' => new Map<String, Object> {
