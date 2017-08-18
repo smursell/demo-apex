@@ -9,67 +9,72 @@
             var data = e.data;
             switch (data.name) {
                 case 'viewer-image-viewed':
-                    latestImageViewed = data.payload.image.public_id;
-                    console.log(latestImageViewed);
+                    latestImageViewed = data.payload.image;
                     break;
                 case 'viewer-closed':
                     latestImageViewed = null;
             }
         }
     }, false);
-
-    //CROPPING
     function cropFace(){
         var height = document.getElementById("heightInput").value;
         var width = document.getElementById("widthInput").value;
         var crop = document.getElementById("cropInput").value;
         var gravity = document.getElementById("gravityInput").value;
         var radius = document.getElementById("radiusInput").value;
-
+        var options = JSON.stringify({'crop': crop, 'gravity': gravity, 'radius': radius});
         Visualforce.remoting.Manager.invokeAction(
             '{!$RemoteAction.CropFaceController.cropFace}',
-            latestImageViewed,
-            width,//width
-            height,//height
-            crop,//crop option
-            gravity,//gravity
-            radius, //radius
+            latestImageViewed.public_id,
+            width,
+            height,
+            options,
             function(result, event){
                 if (event.status) {
-                   
-                    var WindowObjectReference = window.open(
-                        result, 
-                        "Face Crop",
-                        "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"
-                        );  
+                    window.open(result, '_blank');  
                 } else if (event.type === 'exception') {
-                    alert(event);
+                    alert(event.message);
                 } else {
-                    alert(event);
+                    alert(event.message);
                 }
-            }, 
-            {escape: true}
+            }
         );
-        }//end cropFace
+    }
     </script>
-
-        <!-- height section -->
-        <p>Height:</p>
-        <input type="number" id="heightInput"/>
-        <!-- width section -->
-        <p>Width:</p>
-        <input type="number" id="widthInput"/>
-        <!-- crop section -->
-       <p>Crop:</p>
-        <input type="text" id="cropInput"/>
-        <!-- gravity section -->
-        <p>Gravity:</p>
-        <input type="text" id="gravityInput"/>        
-        <!-- radius section -->
-        <p>Radius:</p>
-        <input type="text" id="radiusInput"/>
-        <!-- Button to initiate cropping -->
-        <button onclick="cropFace()">Crop Face</button>
-
+    <div class="slds-form slds-form_stacked">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="heightInput">Height</label>
+            <div class="slds-form-element__control">
+                <input type="number" id="heightInput" class="slds-input" placeholder="200">
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="widthInput">Width</label>
+            <div class="slds-form-element__control">
+                <input type="number" id="widthInput" class="slds-input" placeholder="200">
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="cropInput">Crop</label>
+            <div class="slds-form-element__control">
+                <input type="text" id="cropInput" class="slds-input" placeholder="crop">
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="gravityInput">Gravity</label>
+            <div class="slds-form-element__control">
+                <input type="text" id="gravityInput" class="slds-input" placeholder="face">
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="radiusInput">Radius</label>
+            <div class="slds-form-element__control">
+                <input type="text" id="radiusInput" class="slds-input" placeholder="radius">
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <button class="slds-button slds-button_brand" onclick="cropFace()">Button</button>
+        </div>
+    </div>
     <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
 </apex:page>
