@@ -1,4 +1,5 @@
 <apex:page standardController="Account" extensions="CropFaceController">
+<apex:slds />
     <script>
     var latestImageViewed;
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -41,39 +42,41 @@
         );
     }
     </script>
-    <div class="slds-form slds-form_stacked">
-        <div class="slds-form-element">
-            <label class="slds-form-element__label" for="heightInput">Height</label>
-            <div class="slds-form-element__control">
-                <input type="number" id="heightInput" class="slds-input" placeholder="200"/>
+    <div class="slds-scope">
+        <div class="slds-form slds-form_stacked">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="heightInput">Height</label>
+                <div class="slds-form-element__control">
+                    <input type="number" id="heightInput" class="slds-input" placeholder="200"/>
+                </div>
             </div>
-        </div>
-        <div class="slds-form-element">
-            <label class="slds-form-element__label" for="widthInput">Width</label>
-            <div class="slds-form-element__control">
-                <input type="number" id="widthInput" class="slds-input" placeholder="200"/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="widthInput">Width</label>
+                <div class="slds-form-element__control">
+                    <input type="number" id="widthInput" class="slds-input" placeholder="200"/>
+                </div>
             </div>
-        </div>
-        <div class="slds-form-element">
-            <label class="slds-form-element__label" for="cropInput">Crop</label>
-            <div class="slds-form-element__control">
-                <input type="text" id="cropInput" class="slds-input" placeholder="crop"/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="cropInput">Crop</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="cropInput" class="slds-input" placeholder="crop"/>
+                </div>
             </div>
-        </div>
-        <div class="slds-form-element">
-            <label class="slds-form-element__label" for="gravityInput">Gravity</label>
-            <div class="slds-form-element__control">
-                <input type="text" id="gravityInput" class="slds-input" placeholder="face"/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="gravityInput">Gravity</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="gravityInput" class="slds-input" placeholder="face"/>
+                </div>
             </div>
-        </div>
-        <div class="slds-form-element">
-            <label class="slds-form-element__label" for="radiusInput">Radius</label>
-            <div class="slds-form-element__control">
-                <input type="text" id="radiusInput" class="slds-input" placeholder="max"/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="radiusInput">Radius</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="radiusInput" class="slds-input" placeholder="max"/>
+                </div>
             </div>
-        </div>
-        <div class="slds-form-element">
-            <button class="slds-button slds-button_brand" onclick="cropFace()">Crop Face</button>
+            <div class="slds-form-element">
+                <button class="slds-button slds-button_brand" onclick="cropFace()">Crop Face</button>
+            </div>
         </div>
     </div>
     <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
