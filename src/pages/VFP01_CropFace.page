@@ -10,6 +10,7 @@
             switch (data.name) {
                 case 'viewer-image-viewed':
                     latestImageViewed = data.payload.image.public_id;
+                    console.log(latestImageViewed);
                     break;
                 case 'viewer-closed':
                     latestImageViewed = null;
