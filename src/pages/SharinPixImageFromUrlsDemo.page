@@ -1,0 +1,113 @@
+<apex:page controller="SharinPixImageFromUrlsDemo">
+    <script>
+    function generateUrlInput(index) {
+        return '<div class="padding-top slds-form-element"><label class="slds-form-element__label">URL number ' + (index+1) + '</label><div class="slds-grid slds-wrap slds-grid_pull-padded"><div class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12"><div class="slds-form-element__control"><input type="text" id="input-filename-' + (index) + '" class="slds-input" placeholder="Filename" /></div></div><div class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_8-of-12"><div class="slds-form-element__control"><input type="text" id="input-url-' + (index) + '" class="slds-input" placeholder="URL" /></div></div></div></div>'
+    }
+    </script>
+    <style>
+    #main {
+        padding: 10px 20px;
+    }
+    #main-form {
+        max-width: 800px;
+    }
+    .margined-top {
+        margin-top: .5em !important;
+    }
+    .padding-top {
+        padding-top: .5em !important;
+    }
+    .divider-top {
+        border-top: 1px solid rgba(0, 0, 0, .3);
+    }
+    #success-div {
+        display: none;
+    }
+    </style>
+    <div class="slds-scope" id="main">
+        <div class="slds-grid">
+            <div class="slds-col">
+                <div id="success-div" style="height: 4rem;">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
+                            <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small ">Your images was send for upload.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col">
+                <div id="main-form" class="slds-form slds-form_stacked">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-unique-id">Album ID</label>
+                        <div class="slds-form-element__control">
+                            <input type="text" id="input-album-id" class="slds-input" />
+                        </div>
+                    </div>
+                    <div class="margined-top" id="urls">
+                        <script>document.write(generateUrlInput(0))</script>
+                    </div>
+                    <div class="margined-top slds-form-element">
+                        <button type="button" onclick="uploadAll()" class="margined-top slds-button slds-button_brand">
+                            Upload
+                        </button>
+                        <button type="button" onclick="addUrl()" class="margined-top slds-button slds-button_neutral">
+                            Add URL
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    var isEmpty = function(string) {
+        return string === '';
+    };
+    var addUrl = function() {
+        var $urls = document.getElementById('urls');
+        if ($urls.childElementCount <= 10) {
+            var values = [];
+            for (var index = 1; index < $urls.childElementCount; index++) {
+                var filename = document.getElementById('input-filename-' + (index-1)).value;
+                var url = document.getElementById('input-url-' + (index-1)).value;
+                values.push({filename: filename, url: url});
+            }
+            var urlInputHtml = generateUrlInput($urls.childElementCount - 1);
+            $urls.innerHTML += urlInputHtml;
+            for (var index = 1; index < $urls.childElementCount - 1; index++) {
+                document.getElementById('input-filename-' + (index-1)).value = values[index-1].filename;
+                document.getElementById('input-url-' + (index-1)).value = values[index-1].url;
+            }
+        }
+    };
+    var uploadAll = function() {
+        var $urls = document.getElementById('urls');
+        for (var index = 1; index < $urls.childElementCount; index++) {
+            var albumId = document.getElementById('input-album-id').value;
+            var filename = document.getElementById('input-filename-' + (index-1)).value;
+            var url = document.getElementById('input-url-' + (index-1)).value;
+            if (!albumId || !url || !filename || isEmpty(albumId) || isEmpty(url) || isEmpty(filename)) {
+                alert('Fill all fields appropriately.');
+                return;
+            }
+            Visualforce.remoting.Manager.invokeAction(
+                '{! $RemoteAction.SharinPixImageFromUrlsDemo.uploadByUrls }',
+                albumId, url, filename,
+                function(res) {
+                    if (res) {
+                        $alert = document.getElementById('success-div');
+                        $alert.style.display = 'block';
+                        setTimeout(function() {
+                            $alert.style.display = 'none';
+                        }, 3000)
+                    }
+                }
+            )
+        }
+    }
+    </script>
+    <apex:slds />
+</apex:page>
