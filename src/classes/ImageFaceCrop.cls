@@ -46,7 +46,7 @@ public class ImageFaceCrop {
      * @default gravity : face
      * @default radius : max
      * ---------------------------------
-     * @return  URL of transformed image
+     * @return  URL of cropped image
      */
     public String cropFace(String imageId, Integer width, Integer height){
         return cropFace(imageId, width, height, 'crop', 'face', 'max');
@@ -61,7 +61,7 @@ public class ImageFaceCrop {
      * @param gravity : Decides which part of the image to keep while the 'crop', 'pad', 'thumb' and 'fill' crop modes are used
      * @param radius : max
      * ---------------------------------
-     * @return  URL of transformed image
+     * @return  URL of cropped image
      */
     public String cropFace(String imageId, Integer width, Integer height, String crop, String gravity, String radius){    
         imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
