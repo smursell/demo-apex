@@ -2,12 +2,12 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>ImageTextOverlay</members>
-        <members>VFC01_ImageTextOverlay</members>
+        <members>ImageTextOverlayController</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>VFP_ImageTextOverlay</members>
+        <members>ImageTextOverlayPage</members>
         <name>ApexPage</name>
     </types>
-    <version>36.0</version>
+    <version>40.0</version>
 </Package>
