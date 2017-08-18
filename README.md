@@ -1,7 +1,7 @@
 
 # Image Face Crop
 
-Go to an Account object. Edit its page layout and add the VisualForcePage 'VFP01_CropFace.vfp' to a new section. Remember to set its size to 500px.
+Go to an Account object. Edit its page layout and add the VisualForcePage 'CropFacePage.vfp' to a new section. Remember to set its size to 500px.
 
 ## Explaining the gravity parameters options
 

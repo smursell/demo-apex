@@ -6,16 +6,13 @@ public class ImageFaceCrop {
     }
     /**
      *Description: Crops human face found in image
-     * ---------------------------------
-     * @param  imageId : Public ID of image from which to crop face
-     * ---------------------------------
-     * @default crop : crop
-     * @default gravity : face
-     * @default radius : max
-     * @default width : 200 pixels
-     * @default height : 200 pixels
-     * ---------------------------------
-     * @return  URL of transformed image
+     * @param   imageId [Public ID of image from which to crop face]
+     * @default crop    [crop]
+     * @default gravity [face]
+     * @default radius  [max]
+     * @default width   [200 pixels]
+     * @default height  [200 pixels]
+     * @return  [URL of transformed image]
      */
     public String cropFace(String imageId){
         imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
@@ -37,31 +34,26 @@ public class ImageFaceCrop {
     }
     /**
      *Description: Crops human face found in image
-     * ---------------------------------
-     * @param  imageId : Public ID of image from which to crop face
-     * @param  width : width of cropped image
-     * @param  height : height of cropped image
-     * ---------------------------------
-     * @default crop : crop
-     * @default gravity : face
-     * @default radius : max
-     * ---------------------------------
-     * @return  URL of cropped image
+     * @param   imageId [Public ID of image from which to crop face]
+     * @param   width   [width of cropped image]
+     * @param   height  [height of cropped image]
+     * @default crop    [crop]
+     * @default gravity [face]
+     * @default radius  [max]
+     * @return  [URL of cropped image]
      */
     public String cropFace(String imageId, Integer width, Integer height){
         return cropFace(imageId, width, height, 'crop', 'face', 'max');
     }
    	/**
      *Description: Crops human face found in image
-     * ---------------------------------
-     * @param  imageId : Public ID of image from which to crop face
-     * @param  width : width of cropped image
-     * @param  height : height of cropped image
-     * @param crop : crop mode
-     * @param gravity : Decides which part of the image to keep while the 'crop', 'pad', 'thumb' and 'fill' crop modes are used
-     * @param radius : max
-     * ---------------------------------
-     * @return  URL of cropped image
+     * @param  imageId [Public ID of image from which to crop face]
+     * @param  width   [width of cropped image]
+     * @param  height  [height of cropped image]
+     * @param  crop    [crop mode]
+     * @param  gravity [Decides which part of the image to keep while the 'crop', 'pad', 'thumb' and 'fill' crop modes are used]
+     * @param  radius  [max]
+     * @return [URL of cropped image]
      */
     public String cropFace(String imageId, Integer width, Integer height, String crop, String gravity, String radius){    
         imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {

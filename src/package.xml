@@ -6,7 +6,7 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>VFP01_CropFace</members>
+        <members>CropFacePage</members>
         <name>ApexPage</name>
     </types>
     <version>36.0</version>

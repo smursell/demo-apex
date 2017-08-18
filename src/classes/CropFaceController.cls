@@ -22,11 +22,11 @@ global class CropFaceController {
         });
     }
     /**
-     * RemoteAction method returns URL of a cropped image
-     * @param  imageId [SharinPix id of image]
-     * @param  width   [width of cropped image]
-     * @param  height  [height of cropped image]
-     * @param  options [JSON string for extra cropping options '{"crop": "crop", "gravity": "face", "radius": "max"}']
+     * Description: RemoteAction method returns URL of a cropped image
+     * @param  imageId   [SharinPix id of image]
+     * @param  width     [width of cropped image]
+     * @param  height    [height of cropped image]
+     * @param  options   [JSON string for extra cropping options '{"crop": "crop", "gravity": "face", "radius": "max"}']
      * @return imgExtUrl [URL of cropped image]
      */
     @RemoteAction
