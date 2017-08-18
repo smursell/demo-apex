@@ -8,7 +8,7 @@ public class ImageTextOverlay {
     public String overlayText(String imageId, String text, String fontStyle, String fontSize, String fontEmphasis, String gravity, String borderWidth, String borderStyle, String borderColor){  
         String sanitizedText = EncodingUtil.urlEncode(text, 'UTF-8').replaceAll('\\+', '%20').replaceAll('%2C', '%252C');
         String overlay = 'text:'+fontStyle+'_'+fontSize+'_'+fontEmphasis+'_stroke:'+sanitizedText+',bo_'+borderWidth+'px_'+borderStyle+'_'+borderColor;
-        imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
+        String imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
                             'image_id' => imageId,
                             'sharinpix' => new Map<String, Object> {
                                 'download' => true,
