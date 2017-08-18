@@ -4,7 +4,8 @@ global class CropFaceController {
     public String parameters {get;set;}
 
     public CropFaceController(ApexPages.standardController controller){
-        utils = new sharinpix.Utils();     
+        utils = new sharinpix.Utils();
+        albumId = controller.getId();     
         parameters = JSON.serialize(new map<string, object>{
             'abilities' => new map<string, object>{
                     albumId => new map<string, object>{
