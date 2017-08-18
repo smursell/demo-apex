@@ -1,7 +1,6 @@
 public class ImageFaceCrop {
     private sharinpix.Utils utils;
     private String imgExtUrl{get;set;}
-    
     public ImageFaceCrop(){    
         utils = new sharinpix.Utils();
     }

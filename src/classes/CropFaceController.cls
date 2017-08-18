@@ -2,7 +2,6 @@ global class CropFaceController {
     public Id albumId {get;set;}
     private sharinpix.Utils utils;
     public String parameters {get;set;}
-
     public CropFaceController(ApexPages.standardController controller){
         utils = new sharinpix.Utils();
         albumId = controller.getId();     
