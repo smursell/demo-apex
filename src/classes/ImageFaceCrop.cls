@@ -45,7 +45,7 @@ public class ImageFaceCrop {
     public String cropFace(String imageId, Integer width, Integer height){
         return cropFace(imageId, width, height, 'crop', 'face', 'max');
     }
-   	/**
+    /**
      *Description: Crops human face found in image
      * @param  imageId [Public ID of image from which to crop face]
      * @param  width   [width of cropped image]
