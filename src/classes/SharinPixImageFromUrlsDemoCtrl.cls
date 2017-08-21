@@ -1,4 +1,4 @@
-public with sharing class SharinPixImageFromUrlsDemo {
+public with sharing class SharinPixImageFromUrlsDemoCtrl {
 
     /**
      * This method uploads file using URL
@@ -13,5 +13,4 @@ public with sharing class SharinPixImageFromUrlsDemo {
         sharinpix.Utils utils = new sharinpix.Utils();
         utils.uploadFromUrl(url, albumId, filename);
     }
-
 }

@@ -1,9 +1,9 @@
-<apex:page controller="SharinPixImageFromUrlsDemo">
+<apex:page controller="SharinPixImageFromUrlsDemoCtrl">
     <apex:slds />
     <script>
     function generateUrlInput(index) {
         return '\
-            <div class="padding-top slds-form-element">\
+            <div class="slds-p-top_small slds-form-element">\
                 <label class="slds-form-element__label">URL number ' + (index+1) + '</label>\
                 <div class="slds-grid slds-wrap slds-grid_pull-padded">\
                     <div class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12">\
@@ -50,7 +50,7 @@
                 continue;
             }
             Visualforce.remoting.Manager.invokeAction(
-                '{! $RemoteAction.SharinPixImageFromUrlsDemo.uploadByUrls }',
+                '{! $RemoteAction.SharinPixImageFromUrlsDemoCtrl.uploadByUrls }',
                 albumId, url, filename,
                 function(res, event) {
                     if (event.status) {
@@ -72,12 +72,6 @@
     #main-form {
         max-width: 800px;
     }
-    .margined-top {
-        margin-top: .5em !important;
-    }
-    .padding-top {
-        padding-top: .5em !important;
-    }
     .divider-top {
         border-top: 1px solid rgba(0, 0, 0, .3);
     }
@@ -95,7 +89,7 @@
                     <div class="slds-notify_container slds-is-relative">
                         <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
                             <div class="slds-notify__content">
-                                <h2 class="slds-text-heading_small ">Your images was send for upload.</h2>
+                                <h2 class="slds-text-heading_small ">Your images were sent for upload.</h2>
                             </div>
                         </div>
                     </div>
@@ -111,14 +105,14 @@
                             <input type="text" id="input-album-id" class="slds-input" />
                         </div>
                     </div>
-                    <div class="margined-top" id="urls">
+                    <div class="slds-m-top_small" id="urls">
                         <script>document.write(generateUrlInput(0))</script>
                     </div>
-                    <div class="margined-top slds-form-element">
-                        <button type="button" onclick="uploadAll()" class="margined-top slds-button slds-button_brand">
+                    <div class="slds-m-top_small slds-form-element">
+                        <button type="button" onclick="uploadAll()" class="slds-m-top_small slds-button slds-button_brand">
                             Upload
                         </button>
-                        <button type="button" onclick="addUrl()" class="margined-top slds-button slds-button_neutral">
+                        <button type="button" onclick="addUrl()" class="slds-m-top_small slds-button slds-button_neutral">
                             Add URL
                         </button>
                     </div>
