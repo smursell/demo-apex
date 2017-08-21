@@ -28,7 +28,6 @@
         var borderStyle = document.getElementById("borderStyleInput").value;
         var borderColor = document.getElementById("borderColorInput").value;
         var options = JSON.stringify({'fontStyle': fontStyle, 'fontSize': fontSize, 'fontEmphasis': fontEmphasis, 'gravity': gravity, 'borderWidth': borderWidth, 'borderStyle': borderStyle, 'borderColor': borderColor});
-        alert('options: '+options);
         Visualforce.remoting.Manager.invokeAction(
             '{!$RemoteAction.ImageTextOverlayController.overlayText}',
             latestImageViewed,
@@ -93,7 +92,7 @@
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="borderColorInput">borderColor</label>
                 <div class="slds-form-element__control">
-                    <input type="color" id="borderColorInput" class="slds-input" placeholder="red"/>
+                    <input type="text" id="borderColorInput" class="slds-input" placeholder="red"/>
                 </div>
             </div>
             <div class="slds-form-element">
