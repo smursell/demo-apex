@@ -1,4 +1,5 @@
 <apex:page standardController="Account" extensions="ImageTextOverlayController">
+<apex:slds/>
     <script>
     var latestImageViewed;
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -44,43 +45,54 @@
         );
     }//end cropFace
     </script>
-        
-        <!-- text to-be-displayed section -->
-        <p>Text:</p>
-        <input type="text" id="textInput"/>
-        
-        <!-- font-style section -->
-        <p>Font-Style:</p>
-        <input type="text" id="fontStyleInput"/>
-        
-        <!-- font-size section -->
-        <p>Font-Size:</p>
-        <input type="number" id="fontSizeInput"/>
-        
-        <!--  section font-emphasis-->
-       <p>Font-Emphasis:</p>
-        <input type="text" id="fontEmphasisInput"/>
-        
-        <!-- gravity section -->
-        <p>Gravity:</p>
-        <input type="text" id="gravityInput"/>
-        
-        <!-- border-width section -->
-        <p>Border-Width:</p>
-        <input type="text" id="borderWidthInput"/>
-        
-        <!-- border-style section -->
-        <p>Border-Style:</p>
-        <input type="text" id="borderStyleInput"/>
-        
-        <!-- border-color section -->
-        <p>Border-Color:</p>
-        <input type="text" id="borderColorInput"/>
-       
-        <!-- Button to initiate cropping -->
-        <button onclick="overlayText()">Overlay Text</button>
-    
-    
+      <div class="slds-scope">
+        <div class="slds-form slds-form_stacked">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="textInput">text</label>
+                <div class="slds-form-element__control">
+                    <input type="number" id="textInput" class="slds-input" placeholder="200"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="fontStyleInput">fontStyle</label>
+                <div class="slds-form-element__control">
+                    <input type="number" id="fontStyleInput" class="slds-input" placeholder="200"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="fontSizeInput">fontSize</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="fontSizeInput" class="slds-input" placeholder="crop"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="gravityInput">Gravity</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="gravityInput" class="slds-input" placeholder="face"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="borderWidthInput">borderWidth</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="borderWidthInput" class="slds-input" placeholder="max"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="borderStyleInput">borderStyle</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="borderStyleInput" class="slds-input" placeholder="max"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="borderColorInput">borderColor</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="borderColorInput" class="slds-input" placeholder="max"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <button class="slds-button slds-button_brand" onclick="cropFace()">Crop Face</button>
+            </div>
+        </div>
+    </div>
     <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
-    
 </apex:page>
