@@ -34,7 +34,7 @@ global class ImageTextOverlayController {
         String fontEmphasis  = (String) optionsMap.get('fontEmphasis');
         String gravity       = (String) optionsMap.get('gravity');
         String borderWidth   = (String) optionsMap.get('borderWidth');
-        String borderStyle   = (String) otionsMap.get('borderStyle');
+        String borderStyle   = (String) optionsMap.get('borderStyle');
         String borderColor   = (String) optionsMap.get('borderColor');
         ImageTextOverlay ito = new ImageTextOverlay();
         return ito.overlayText(imageId, text, fontStyle, fontSize, fontEmphasis, gravity, borderWidth, borderStyle, borderColor);
