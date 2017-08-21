@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="slds-form-element">
-                <button class="slds-button slds-button_brand" onclick="cropFace()">Crop Face</button>
+                <button class="slds-button slds-button_brand" onclick="overlayText()">Overlay Text</button>
             </div>
         </div>
     </div>
