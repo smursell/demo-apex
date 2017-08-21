@@ -9,5 +9,4 @@
         <members>ImageTextOverlayPage</members>
         <name>ApexPage</name>
     </types>
-    <version>40.0</version>
 </Package>
