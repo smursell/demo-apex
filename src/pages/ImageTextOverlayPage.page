@@ -28,6 +28,7 @@
         var borderStyle = document.getElementById("borderStyleInput").value;
         var borderColor = document.getElementById("borderColorInput").value;
         var options = JSON.stringify({'fontStyle': fontStyle, 'fontSize': fontSize, 'fontEmphasis': fontEmphasis, 'gravity': gravity, 'borderWidth': borderWidth, 'borderStyle': borderStyle, 'borderColor': borderColor});
+        alert('options: '+options);
         Visualforce.remoting.Manager.invokeAction(
             '{!$RemoteAction.ImageTextOverlayController.overlayText}',
             latestImageViewed,
