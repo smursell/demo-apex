@@ -50,19 +50,19 @@
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="textInput">text</label>
                 <div class="slds-form-element__control">
-                    <input type="number" id="textInput" class="slds-input" placeholder="hello"/>
+                    <input type="text" id="textInput" class="slds-input" placeholder="hello"/>
                 </div>
             </div>
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="fontStyleInput">fontStyle</label>
                 <div class="slds-form-element__control">
-                    <input type="number" id="fontStyleInput" class="slds-input" placeholder="arial"/>
+                    <input type="tex" id="fontStyleInput" class="slds-input" placeholder="arial"/>
                 </div>
             </div>
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="fontSizeInput">fontSize</label>
                 <div class="slds-form-element__control">
-                    <input type="text" id="fontSizeInput" class="slds-input" placeholder="45"/>
+                    <input type="number" id="fontSizeInput" class="slds-input" placeholder="45"/>
                 </div>
             </div>
             <div class="slds-form-element">
@@ -74,7 +74,7 @@
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="borderWidthInput">borderWidth</label>
                 <div class="slds-form-element__control">
-                    <input type="text" id="borderWidthInput" class="slds-input" placeholder="5"/>
+                    <input type="number" id="borderWidthInput" class="slds-input" placeholder="5"/>
                 </div>
             </div>
             <div class="slds-form-element">
@@ -86,7 +86,7 @@
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="borderColorInput">borderColor</label>
                 <div class="slds-form-element__control">
-                    <input type="text" id="borderColorInput" class="slds-input" placeholder="red"/>
+                    <input type="color" id="borderColorInput" class="slds-input" placeholder="red"/>
                 </div>
             </div>
             <div class="slds-form-element">
