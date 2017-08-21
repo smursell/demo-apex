@@ -1,9 +1,11 @@
 public class ImageFaceCrop {
     private sharinpix.Utils utils;
     private String imgExtUrl{get;set;}
+
     public ImageFaceCrop(){    
         utils = new sharinpix.Utils();
     }
+
     /**
      *Description: Crops human face found in image
      * @param   imageId [Public ID of image from which to crop face]
@@ -32,6 +34,7 @@ public class ImageFaceCrop {
         }).get('resource_url');
         return imgExtUrl;
     }
+
     /**
      *Description: Crops human face found in image
      * @param   imageId [Public ID of image from which to crop face]
@@ -45,6 +48,7 @@ public class ImageFaceCrop {
     public String cropFace(String imageId, Integer width, Integer height){
         return cropFace(imageId, width, height, 'crop', 'face', 'max');
     }
+    
     /**
      *Description: Crops human face found in image
      * @param  imageId [Public ID of image from which to crop face]
