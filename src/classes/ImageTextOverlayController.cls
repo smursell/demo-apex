@@ -2,22 +2,21 @@ global class ImageTextOverlayController {
     global String  parameters {set;get;}
     public Id      albumId;
 	public ImageTextOverlayController(ApexPages.standardController controller){
-        albumId     = controller.getId();
-        parameters  = JSON.serialize(new map<string, object>{
+        albumId = controller.getId();     
+        parameters = JSON.serialize(new map<string, object>{
             'abilities' => new map<string, object>{
                     albumId => new map<string, object>{
-                        'Access' => new map<string, boolean>{
-                            'see'           => true,
-                            'image_list'    => true,
-                            'image_upload'  => true,
-                            'image_delete'  => true,
-                            'image_crop'    => true,
-                            'image_rotate'  => true
+                        'Access' =>  new map<string, boolean>{
+                            'see' => true,
+                            'image_list' => true,
+                            'image_upload' => true,
+                            'image_delete' => true,
+                            'image_crop' => true,
+                            'image_rotate' => true
                         }
                     }
-            },
+                },
             'Id' => albumId
-            }
         });
     }
     /**
