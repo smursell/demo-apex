@@ -29,13 +29,13 @@ global class ImageTextOverlayController {
 	@RemoteAction
     global static String overlayText(String imageId, String text, String options){
         map<string, object> optionsMap = (map<string, object>) JSON.deserializeUntyped(options);
-        String fontStyle     = optionsMap.get('fontStyle');
-        String fontSize      = optionsMap.get('fontSize');
-        String fontEmphasis  = optionsMap.get('fontEmphasis');
-        String gravity       = optionsMap.get('gravity');
-        String borderWidth   = optionsMap.get('borderWidth');
-        String borderStyle   = optionsMap.get('borderStyle');
-        String borderColor   = optionsMap.get('borderColor');
+        String fontStyle     = (String) optionsMap.get('fontStyle');
+        String fontSize      = (String) optionsMap.get('fontSize');
+        String fontEmphasis  = (String) optionsMap.get('fontEmphasis');
+        String gravity       = (String) optionsMap.get('gravity');
+        String borderWidth   = (String) optionsMap.get('borderWidth');
+        String borderStyle   = (String) ptionsMap.get('borderStyle');
+        String borderColor   = (String) optionsMap.get('borderColor');
         ImageTextOverlay ito = new ImageTextOverlay();
         return ito.overlayText(imageId, text, fontStyle, fontSize, fontEmphasis, gravity, borderWidth, borderStyle, borderColor);
     }  
