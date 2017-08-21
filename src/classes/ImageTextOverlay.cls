@@ -1,8 +1,10 @@
 public class ImageTextOverlay {
-    private sharinpix.Utils utils; 
+    private sharinpix.Utils utils;
+
     public ImageTextOverlay(){
         utils = new sharinpix.Utils();
     }
+    
     public String overlayText(String imageId, String text, String fontStyle, String fontSize, String fontEmphasis, String gravity, String borderWidth, String borderStyle, String borderColor){  
         String sanitizedText = EncodingUtil.urlEncode(text, 'UTF-8').replaceAll('\\+', '%20').replaceAll('%2C', '%252C');
         String overlay       = 'text:'+fontStyle+'_'+fontSize+'_'+fontEmphasis+'_stroke:'+sanitizedText+',bo_'+borderWidth+'px_'+borderStyle+'_'+borderColor;

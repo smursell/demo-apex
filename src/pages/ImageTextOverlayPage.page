@@ -5,6 +5,7 @@
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
     var eventer = window[eventMethod];
     var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    
     eventer(messageEvent, function(e) {
         if (e.origin === 'https://app.sharinpix.com') {
             var data = e.data;
@@ -17,13 +18,14 @@
             }
         }
     }, false);
+
     function overlayText(){   
         var text = document.getElementById("textInput").value;
         var fontStyle = document.getElementById("fontStyleInput").value;
         var fontSize = document.getElementById("fontSizeInput").value;
         var fontEmphasis = document.getElementById("fontEmphasisInput").value;
         var gravity = document.getElementById("gravityInput").value;
-		var borderWidth = document.getElementById("borderWidthInput").value;
+        var borderWidth = document.getElementById("borderWidthInput").value;
         var borderStyle = document.getElementById("borderStyleInput").value;
         var borderColor = document.getElementById("borderColorInput").value;
         var options = JSON.stringify({'fontStyle': fontStyle, 'fontSize': fontSize, 'fontEmphasis': fontEmphasis, 'gravity': gravity, 'borderWidth': borderWidth, 'borderStyle': borderStyle, 'borderColor': borderColor});

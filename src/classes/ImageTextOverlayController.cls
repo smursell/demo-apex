@@ -1,7 +1,8 @@
 global class ImageTextOverlayController {
     global String  parameters {set;get;}
     public Id      albumId;
-	public ImageTextOverlayController(ApexPages.standardController controller){
+
+    public ImageTextOverlayController(ApexPages.standardController controller){
         albumId = controller.getId();     
         parameters = JSON.serialize(new map<string, object>{
             'abilities' => new map<string, object>{
@@ -19,6 +20,7 @@ global class ImageTextOverlayController {
             'Id' => albumId
         });
     }
+
     /**
      * [overlayText method overlays a text content on the specified image]
      * @param  imageId [SharinPix id of image]
@@ -26,7 +28,7 @@ global class ImageTextOverlayController {
      * @param  options [JSON string with more image transformation options]
      * @return         [image URL of image with overlaid text]
      */
-	@RemoteAction
+    @RemoteAction
     global static String overlayText(String imageId, String text, String options){
         map<string, object> optionsMap = (map<string, object>) JSON.deserializeUntyped(options);
         String fontStyle     = (String) optionsMap.get('fontStyle');
