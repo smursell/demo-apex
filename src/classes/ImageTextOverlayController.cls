@@ -14,7 +14,8 @@ global class ImageTextOverlayController {
                             'image_crop'    => true,
                             'image_rotate'  => true
                         }
-                    },
+                    }
+            },
             'Id' => albumId
             }
         });
