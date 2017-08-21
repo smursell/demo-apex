@@ -8,5 +8,6 @@
     <types>
         <members>ImageTextOverlayPage</members>
         <name>ApexPage</name>
+         <version>36.0</version>
     </types>
 </Package>
