@@ -65,6 +65,12 @@
                     <input type="number" id="fontSizeInput" class="slds-input" placeholder="45"/>
                 </div>
             </div>
+             <div class="slds-form-element">
+                <label class="slds-form-element__label" for="fontEmphasisInput">fontEmphasis</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="fontEmphasisInput" class="slds-input" placeholder="bold"/>
+                </div>
+            </div>
             <div class="slds-form-element">
                 <label class="slds-form-element__label" for="gravityInput">Gravity</label>
                 <div class="slds-form-element__control">
