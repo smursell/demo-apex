@@ -1,5 +1,5 @@
 global class ImageTextOverlayController {
-    public String  parameters {get;}
+    global String  parameters {get;}
     public Id      albumId;
 	public ImageTextOverlayController(ApexPages.standardController controller){
         albumId     = controller.getId();
