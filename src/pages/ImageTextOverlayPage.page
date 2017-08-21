@@ -17,7 +17,6 @@
             }
         }
     }, false);
-
     function overlayText(){   
         var text = document.getElementById("textInput").value;
         var fontStyle = document.getElementById("fontStyleInput").value;
