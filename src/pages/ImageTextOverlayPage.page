@@ -26,17 +26,12 @@
 		var borderWidth = document.getElementById("borderWidthInput").value;
         var borderStyle = document.getElementById("borderStyleInput").value;
         var borderColor = document.getElementById("borderColorInput").value;
+        var options = JSON.stringify({'fontStyle': fontStyle, 'fontSize': fontSize, 'fontEmphasis': fontEmphasis, 'gravity': gravity, 'borderWidth': borderWidth, 'borderStyle': borderStyle, 'borderColor': borderColor});
         Visualforce.remoting.Manager.invokeAction(
             '{!$RemoteAction.ImageTextOverlayController.overlayText}',
             latestImageViewed,
             text,
-            fontStyle,
-            fontSize,
-            fontEmphasis,
-            gravity,
-            borderWidth,
-            borderStyle,
-            borderColor,
+            options,
             function(result, event){
                 if (event.status) {
                     window.open(result, '_blank');
