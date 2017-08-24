@@ -17,7 +17,7 @@
         var crop = document.getElementById('crop').value;
         Visualforce.remoting.Manager.invokeAction(
             '{! $RemoteAction.SharinPixResizeDemo.resizeImage }',
-            latestImageViewed, width, height, crop,
+            latestImageViewed.public_id, width, height, crop,
             function(res) {
                 newWindow.location = res;
             }
@@ -31,7 +31,7 @@
             var data = e.data;
             switch (data.name) {
                 case 'viewer-image-viewed':
-                    latestImageViewed = data.payload.image.public_id;
+                    latestImageViewed = data.payload.image;
                     break;
                 case 'viewer-closed':
                     latestImageViewed = null
