@@ -1,0 +1,131 @@
+<apex:page showHeader="false" sidebar="false" controller="SharinPixGoogleVisionDemoCtrl" standardStylesheets="false">
+    <apex:slds />
+    <style>
+    .display-none {
+        display: none;
+    }
+    .display-block {
+        display: block;
+    }
+    </style>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/babel">
+    function generateLabel(label) {
+        var percentage = parseInt(label.score * 100);
+        return `<div class="slds-container_fluid slds-m-bottom_small">
+                        <div class="slds-text-title_caps">${label.description} - <b>${percentage}%</b></div>
+                        <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percentage}" role="progressbar">
+                            <span class="slds-progress-bar__value" style="width: ${percentage}%;">
+                                <span class="slds-assistive-text">Progress: ${percentage}%</span>
+                            </span>
+                        </div>
+                    </div>`;
+    }
+    function generateText(text) {
+        return `<li class="slds-item">${text.description}</li>`;
+    }
+    </script>
+    <script type="text/javascript">
+    function insertDetails(name, details) {
+        var $details = $('#' + name.toLowerCase() + 's');
+        $details.empty();
+        for (var i = 0; i < details.length; i++) {
+            var detail = details[i];
+            $details.append(window['generate' + name](detail));
+        }
+        setTimeout(function() {
+            document.getElementById('google-vision-details').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }, 20);
+    };
+    $(window).on('message', function(e) {
+        e = e.originalEvent;
+        if (e.origin === 'https://app.sharinpix.com') {
+            var data = e.data;
+            switch (data.name) {
+                case 'viewer-image-viewed':
+                    openVisionDetails(data.payload.image);
+                    break;
+                case 'viewer-closed':
+                    closeVisionDetails();
+                    break;
+            }
+        }
+    });
+    var openVisionDetails = function(image) {
+        $('#loading').addClass('display-block');
+        $('#loading').removeClass('display-none');
+        Visualforce.remoting.Manager.invokeAction(
+            '{! $RemoteAction.SharinPixGoogleVisionDemoCtrl.getGoogleVisionDetails }',
+            image.infos.secure_url,
+            function(res) {
+                var keys = Object.keys(res);
+                $('#loading, #clickMessage').removeClass('display-block');
+                $('#loading, #clickMessage').addClass('display-none');
+                $('#visionDetails').removeClass('display-none');
+                $('#visionDetails').addClass('display-block');
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var val = res[key];
+                    switch (key) {
+                        case 'labelAnnotations':
+                            insertDetails('Label', val);
+                            break;
+                        case 'textAnnotations':
+                            insertDetails('Text', val);
+                            break;
+                    }
+                }
+            }
+        );
+    };
+    var closeVisionDetails = function() {
+        var $details = $('#labels, #texts');
+        $details.empty();
+        $('#clickMessage').removeClass('display-none');
+        $('#clickMessage').addClass('display-block');
+        $('#visionDetails').removeClass('display-block');
+        $('#visionDetails').addClass('display-none');
+    }
+    </script>
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-container_fluid">
+            <apex:canvasApp developerName="Albums" height="500px" width="100%" parameters="{! parameters }" />
+        </div>
+        <div class="slds-container_fluid">
+            <div id="loading" class="display-none" style="height: 6rem;">
+                <div class="slds-spinner_container slds-is-fixed">
+                    <div role="status" class="slds-spinner slds-spinner_large slds-spinner_brand">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </div>          
+        </div>
+        <div class="slds-container_fluid">
+            <div id="clickMessage" class="slds-p-around_small">
+                Click the image you wish to use Google Vision on.
+            </div>
+            <a id="google-vision-details"></a>
+            <div id="visionDetails" class="slds-p-around_small display-none">
+                <h1 class="slds-text-heading--large slds-m-bottom_x-small">Google Vision Results</h1>
+                <div class="slds-grid slds-wrap slds-grid_pull-padded">
+                    <div class="slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2 slds-p-around_small">
+                        <h2 class="slds-text-heading--medium slds-m-bottom_x-small">Labels</h2>
+                        <div id="labels" class="slds-grid slds-grid_vertical"></div>
+                    </div>
+                    <div class="slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2 slds-p-around_small">
+                        <h2 class="slds-text-heading--medium slds-m-bottom_x-small">Texts Detected</h2>
+                        <div class="slds-grid slds-grid_vertical">
+                            <ul id="texts" class="slds-has-dividers_around-space">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>
