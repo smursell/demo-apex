@@ -14,13 +14,13 @@
     function generateLabel(label) {
         var percentage = parseInt(label.score * 100);
         return `<div class="slds-container_fluid slds-m-bottom_small">
-                        <div class="slds-text-title_caps">${label.description} - <b>${percentage}%</b></div>
-                        <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percentage}" role="progressbar">
-                            <span class="slds-progress-bar__value" style="width: ${percentage}%;">
-                                <span class="slds-assistive-text">Progress: ${percentage}%</span>
-                            </span>
-                        </div>
-                    </div>`;
+                    <div class="slds-text-title_caps">${label.description} - <b>${percentage}%</b></div>
+                    <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percentage}" role="progressbar">
+                        <span class="slds-progress-bar__value" style="width: ${percentage}%;">
+                            <span class="slds-assistive-text">Progress: ${percentage}%</span>
+                        </span>
+                    </div>
+                </div>`;
     }
     function generateText(text) {
         return `<li class="slds-item">${text.description}</li>`;
