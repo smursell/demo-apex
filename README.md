@@ -1,3 +1,6 @@
+# Deploy to Salesforce
+
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image_crop_resize)
 
 # Image Crop/Resize
 
@@ -27,6 +30,3 @@ Open your Setup and find the Visualforce page named 'SharinPixResizeDemo'. Previ
 * thumb - Used for displaying thumbnails and must always be used alongside the gravity parameter.
 
 <img src="https://raw.githubusercontent.com/Akhilesh05/img/master/thumb.jpg">
-
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image_crop_resize)
-
