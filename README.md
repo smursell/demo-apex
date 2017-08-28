@@ -4,7 +4,6 @@
 Open your Setup and find the Visualforce page named 'SharinPixResizeDemo'. Preview the Visualforce page. Once on the page, you must click on an image so that the resize options will be available. Set a width, height and crop type then click on the 'Resize' button.
 
 ## Explaining the crop parameters available
-For this scenario, let's assume the image new width and height are 100 x 150.
 * scale - The image is made to scale in both horizontally and vertically in order to match the new height and new width. Hence no detail loss but proportion is not maintained.
 
 <img src="https://raw.githubusercontent.com/Akhilesh05/img/master/scale.jpg">
