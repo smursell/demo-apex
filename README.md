@@ -1,6 +1,8 @@
 # Upload attachments to SharinPix (Email-to-Case)
 
-Once deployed, this demo will add a trigger to all newly created attachments on Salesforce cases. 
+Once deployed, this demo will add a trigger to all newly created attachments on Salesforce cases. After that, set up Email-to-Case in your salesforce org if not already done. Ensure you have a SharinPix album in your case page.
+
+You can now send and email with image (JPEG) attachments to see this demo in action.
 
 A possible use case for this demo is automatically uploading received attachments from emails (when using Email-to-Case) to the SharinPix album for the related case.
 
