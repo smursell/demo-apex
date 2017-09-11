@@ -1,6 +1,6 @@
 # SharinPix Mobile App Launcher (FSL / works offline)
 
-The trigger `FieldVisitTrigger` on the `Field_Visit__c` object adds a token to the `Mobile_App_Token__c` field. This field is then used to generate the URL for the SharinPix mobile application while offline. Due to Salesforce1 limitations, this method only works with the Salesforce Field Service Lightning (FSL) application.
+The trigger `FieldVisitTrigger` on the `Field_Visit__c` object adds a URL to the `Mobile_App_URL__c` field. This field is then used to launch the SharinPix mobile application while offline. Due to Salesforce1 limitations, this method only works with the Salesforce Field Service Lightning (FSL) app.
 
 To use this demo, create a `Detail Page Button` on the object you wish to use it on, with `Behavior` as `Display in new window` and `Content Source` as `URL`. Assuming the API name of the object you wish to use is (again) `Field_Visit__c`, in the URL field, use:
 ```
