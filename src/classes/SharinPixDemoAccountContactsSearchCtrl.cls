@@ -1,5 +1,6 @@
 public class SharinPixDemoAccountContactsSearchCtrl {
-    public String parameters { get; set; }
+    private Map<String, String> params;
+    private sharinpix.Client clientInstance = sharinpix.Client.getInstance();
 
     public SharinPixDemoAccountContactsSearchCtrl(ApexPages.StandardController stdCtrl) {
         Id accountId = stdCtrl.getId();
@@ -10,8 +11,14 @@ public class SharinPixDemoAccountContactsSearchCtrl {
             queryStr += contact.Id + ' ';
         }
         query.put('q', queryStr);
-        sharinpix.Client c = sharinpix.Client.getInstance();
-        Map<String, String> params = new Map<String, String> { 'path' => '/search?search_bar=false&q=' + c.token(query) };
-        parameters = JSON.serialize(params);
+        params = new Map<String, String> { 'path' => '/search?search_bar=false&q=' + clientInstance.token(query) };
+    }
+    
+    public String getParameters() {
+        return JSON.serialize(params);
+    }
+    
+    public String getSearchUrl() {
+        return clientInstance.getAppHost() + '?token=' + clientInstance.token(params);
     }
 }
