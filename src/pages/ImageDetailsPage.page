@@ -1,0 +1,62 @@
+<apex:page standardController="Account" extensions="ImageDetailsCtrl">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    	<head>
+  			<title>Image Details</title>
+            <apex:slds ></apex:slds>
+        	<meta charset="utf-8"/>
+  			<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+            <script>
+            	$(window).on('load', function(e){
+                	$('#form').hide();
+                });
+           	</script>
+		</head>
+        <body>
+            <div class="slds-scope">
+            	<apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+                   <div class="slds-p-top_xx-large">
+                	<div class="slds-grid" id="form">
+                        <div class="slds-col">
+                            <label>Filename:</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="filenameField" class="slds-input"/>
+                            </div>
+                            <div class="slds-p-top_large">Format:</div>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="formatField" class="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-col"></div>
+                        <div class="slds-col">
+                            <label>URL:</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="urlField" class="slds-input"/>
+                            </div>
+                            <div class="slds-p-top_large">Created at:</div>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="createdAtField" class="slds-input"/>
+                            </div>
+                        </div>
+           			</div>
+            	</div>
+                </div>
+                <script>
+             		$(window).on('message', function(e) {
+    					if (e.originalEvent.data.name == 'viewer-image-viewed') {
+                            	$('#form').show();
+        						image = e.originalEvent.data.payload.image;
+                            	$('#filenameField').val(image.filename);
+                            	$('#formatField').val(image.infos.format);
+                            	$('#urlField').val(image.infos.url);
+                            	$('#createdAtField').val(image.infos.created_at);
+                        }
+                       if (e.originalEvent.data.name == 'viewer-closed') {
+                           		$('#form').hide();
+                       }
+					});
+                </script>
+        </body>
+    </html>
+</apex:page>
