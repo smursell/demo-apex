@@ -29,3 +29,6 @@ $(window).on('message', function(e) {
 }
 ```
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=js-events)
+
+For more examples about how to capture SharinPix events and how to use them, please follow the ensuing link:
+(https://github.com/SharinPix/demo-apex/tree/chatter_update)
