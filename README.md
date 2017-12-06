@@ -4,9 +4,9 @@ You can download a zip archive containing an album's original images using this 
 
 ## Implementation Steps
 
-The Apex controller (with API version 38) can be found [here](src/classes/SharinPixDemoAlbumImageDownloadCtrl).
+The Apex controller (with API version 38) can be found [here](src/classes/SharinPixDemoAlbumImageDownloadCtrl.cls).
 
-The Visualforce page (with API version 38) can be found [here](src/pages/SharinPixDemoAlbumImageDownload).
+The Visualforce page (with API version 38) can be found [here](src/pages/SharinPixDemoAlbumImageDownload.page).
 
 To run the codes, log in to your salesforce instance. Access the SharinPixDemoAlbumImageDownload page from your browser's navigation bar and provide the ID of the album to download the images for. The ID needs to be a valid Salesforce object ID.
 
