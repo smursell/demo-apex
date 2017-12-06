@@ -26,4 +26,4 @@ You can also append
 ```
 to the URL so as to provide a custom filename (Extract.zip in this case) to the zip output.
 
-[<img src="https://raw,githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=js-zip-download)
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=js-zip-download)
