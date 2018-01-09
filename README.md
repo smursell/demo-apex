@@ -47,9 +47,9 @@ To launch Solution 2, log in to your Salesforce instance and access the `SharinP
 
 ### JavaScript Libraries
 The following libraries are used in both solutions.
-* JSZIP [https://stuk.github.io/jszip/](https://stuk.github.io/jszip/) |
-* FileSaver [https://github.com/eligrey/FileSaver.js/](https://github.com/eligrey/FileSaver.js/) |
-* Jquery (v3.1.1) [https://jquery.com/browser-support/](https://jquery.com/browser-support/) |
+* JSZIP [https://stuk.github.io/jszip/](https://stuk.github.io/jszip/)
+* FileSaver [https://github.com/eligrey/FileSaver.js/](https://github.com/eligrey/FileSaver.js/)
+* Jquery (v3.1.1) [https://jquery.com/browser-support/](https://jquery.com/browser-support/)
 
 
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=js-zip-download)
