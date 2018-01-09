@@ -45,6 +45,8 @@
                             $("body").append('Download complete.');
                         });
                     });
+                }else {
+                    $("body").append('No images in album.');
                 }
             });
         }
@@ -52,7 +54,6 @@
         function downloadImages(callback) {
             var deferred = $.Deferred();
             if (images.length === 0) {
-                $("body").append('No images in album.');
                 deferred.resolve(images);
             }
             var numImagesFetched = 0;
