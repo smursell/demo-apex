@@ -1,73 +1,78 @@
 <apex:page standardController="Account" extensions="SharinPixDemoAlbumImageDownloadV2Ctrl" showHeader="false" sidebar="false" standardStylesheets="false">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" integrity="sha256-RbP/rbx4XeYJH6eYUniR63Jk5NEV48Gjestg49cNSWY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" integrity="sha256-FPJJt8nA+xL4RU6/gsriA8p8xAeLGatoyTjldvQKGdE=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script>
-    var images = [];
-    var albums = JSON.parse('{! albums }');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" integrity="sha256-RbP/rbx4XeYJH6eYUniR63Jk5NEV48Gjestg49cNSWY=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" integrity="sha256-FPJJt8nA+xL4RU6/gsriA8p8xAeLGatoyTjldvQKGdE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script>
+        var albums = JSON.parse('{! albums }');
+        var images = [];
 
-    function loadAlbums() {
-      var albumData = [];
-      $.each(albums, function(index, album) {
-        albumData.push(loadAlbumImages(album, 1));
-      });
-      
-      $.when.apply($, albumData).then(function() {
-        downloadAndZip();
-      });
-    }
-
-    function loadAlbumImages(album, page) {
-      url = "https://app.sharinpix.com/api/v1/albums/" + album.id + "/images?token=" + album.token + "&page=" + page;
-      return $.get(url).then(function(response) {
-        if (response.length) {
-          response.forEach(function(image) {
-            images.push({ filename: image.filename, url: image.original_url, format: image.infos.format, data: null });
-          });
-          return loadAlbumImages(album, ++page);
+        function loadAlbums() {
+            var albumData = [];
+            $.each(albums, function(index, album) {
+                albumData.push(loadAlbumImages(album, 1));
+            });
+            
+            $.when.apply($, albumData).then(function() {
+                downloadAndZip();
+            });
         }
-      });
-    }
 
-    function downloadAndZip() {
-      downloadImages(images, function() {
-        var zip = new JSZip();
-        deferreds = [];
-        images.forEach(function(image) {
-          var filename = image.filename + '.' + image.format;
-          deferreds.push(zip.file(filename, image.data, { binary: true }));
-        });
+        function loadAlbumImages(album, page) {
+            url = "https://app.sharinpix.com/api/v1/albums/" + album.id + "/images?token=" + album.token + "&page=" + page;
+            return $.get(url).then(function(response) {
+                if (response.length) {
+                    response.forEach(function(image) {
+                        images.push({ filename: image.filename, url: image.original_url, format: image.infos.format, data: null });
+                    });
+                    return loadAlbumImages(album, ++page);
+                }
+            });
+        }
 
-        $.when.apply($, deferreds).then(function() {
-          zip.generateAsync({ type: "blob" }).then(function(content) {
-            saveAs(content, 'sample'.replace(/\+/g, ' ') + ".zip");
-          });
-        });
-      });
-    }
+        function downloadAndZip() {
+            downloadImages(function() {
+                if (images.length) {
+                    var zip = new JSZip();
+                    deferreds = [];
+                    images.forEach(function(image) {
+                        var filename = image.filename + '.' + image.format;
+                        deferreds.push(zip.file(filename, image.data, { binary: true }));
+                    });
 
-    function downloadImages(images, callback) {
-      if (images.length === 0) {
-        resolve(images);
-      }
-      var numImagesFetched = 0;
-      var deferred = $.Deferred();
-      images.forEach(function(image) {
-        var req = new XMLHttpRequest();
-        req.open("GET", image.url, true);
-        req.responseType = "blob";
-        req.onload = function(event) {
-          image.data = req.response;
-          numImagesFetched++;
-          if (numImagesFetched === images.length) {
-            deferred.resolve(images);
-          }
-        };
-        req.send();
-      });
-      deferred.done(callback);
-    }
+                    $.when.apply($, deferreds).then(function() {
+                        zip.generateAsync({ type: "blob" }).then(function(content) {
+                            saveAs(content, 'sample'.replace(/\+/g, ' ') + ".zip");
+                            $("body").append('Download complete.');
+                        });
+                    });
+                }
+            });
+        }
 
-  loadAlbums();
-  </script>
+        function downloadImages(callback) {
+            var deferred = $.Deferred();
+            if (images.length === 0) {
+                $("body").append('No images in album.');
+                deferred.resolve(images);
+            }
+            var numImagesFetched = 0;
+            images.forEach(function(image) {
+                var req = new XMLHttpRequest();
+                req.open("GET", image.url, true);
+                req.responseType = "blob";
+                req.onload = function(event) {
+                    image.data = req.response;
+                    numImagesFetched++;
+                    if (numImagesFetched === images.length) {
+                        deferred.resolve(images);
+                    }
+                };
+                req.send();
+            });
+            deferred.done(callback);
+        }
+
+    loadAlbums();
+    </script>
+    Starting download...<br/>
 </apex:page>
