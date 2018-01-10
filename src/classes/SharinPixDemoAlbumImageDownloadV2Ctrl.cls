@@ -20,7 +20,7 @@ public class SharinPixDemoAlbumImageDownloadV2Ctrl {
     public String fetchSharinPixToken(Id albumId) {
         return clientInstance.token(
             new Map<String, Object> {
-                'exp' => DateTime.now().addHours(1).getTime(),
+                'exp' => DateTime.now().addHours(1).getTime() / 1000,
                 'abilities' => new Map<String, Object> {
                 albumId => new Map<String, Object> {
                     'Access' => new Map<String, Boolean> {
