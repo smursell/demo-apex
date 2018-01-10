@@ -48,7 +48,7 @@ public List<Id> albumIdList = new List<Id> { 'album-id-1', 'album-id-2' };
 To launch Solution 2, log in to your Salesforce instance and access the `SharinPixDemoAlbumImageDownloadV2Page` visualforce page. Preview the page and wait till the download and zipping process reach completion.
 
 ### IMPORTANT NOTICE
-You will found in the Visualfore Page (SharinPixDemoAlbumImageDownloadV2Page), the following code snippet:
+You will find in the Visualforce Page (SharinPixDemoAlbumImageDownloadV2Page), the following code snippet:
 ```Java
 image.filename + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
 ```
