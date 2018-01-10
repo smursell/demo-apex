@@ -52,7 +52,7 @@ You will find in the Visualforce Page (SharinPixDemoAlbumImageDownloadV2Page), t
 ```Java
 image.filename + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
 ```
-The use for the code above is to generate and append a random value at the end of each image filename. The reason behind its usage is to distinguish between images with identical filenames. Without this piece of code, the JS Libraries used in this example will overwrite (replace the initial image with the next one) the image files with duplicate filenames. In the event you are required to preserve the original filename, you must ensure the original filenames are unique and you will need to remove the following code:
+The use for the above code is to generate and append a random value at the end of each image filename. The reason behind its usage is to distinguish between images with identical filenames. Without this piece of code, the JavaScript libraries used in this example will overwrite (replace the initial image with the next one) the image files with duplicate filenames. In the event you are required to preserve the original filename, you must ensure the original filenames are unique and you will need to remove the following code:
 ```Java
 + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
 ```
