@@ -15,5 +15,14 @@ For example, we have albums with IDs “album1”, “album2” and “new album
   - `query.put('q', 'tags:(+(album1 album2) +(tag1 OR "tag 2"))');`
 - To view images with both of the tags, irrespective of the albums they are in:
   - `query.put('q', 'tag1 "tag 2"');`
+  
+An `Open Salesforce record` link is available on a viewed image to view the Salesforce record associated with the album, if the IDs used for albums are actual Salesforce record IDs. The domain URL for this link is taken from the Salesforce environment; if it could not be retrieved, the URL defaults to `login.salesforce.com` or `test.salesforce.com`. To specify your own domain, set the `salesforceBaseUrl` key in the token. That is, [line 14](/src/classes/SharinPixDemoAccountContactsSearchCtrl.cls#L14) will be:
+```
+params = new Map<String, String> {
+    'path' => '/search?search_bar=false&q=' + clientInstance.token(query),
+    'salesforceBaseUrl' => 'https://custom-domain.my.salesforce.com'
+};
+```
+and, images' record URLs will lead to, for e.g., https://custom-domain.my.salesforce.com/0Mf0Y000000PBXfAAO
 
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=account_contacts_search)
