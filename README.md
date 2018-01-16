@@ -24,5 +24,4 @@ Find below the links to SharinPix demos and their corresponding descriptions:
 * [Tags](https://github.com/SharinPix/demo-apex/tree/tags) - Display tags on a SharinPix album.
 * [Upload to SharinPix using URL](https://github.com/SharinPix/demo-apex/tree/upload_by_url) -  Upload an image with the use of a URL.
 * [Webhook Site](https://github.com/SharinPix/demo-apex/tree/webhook) - Handle webhooks from SharinPix for several events.
-* [Dynamic Tags](https://github.com/SharinPix/demo-apex/tree/dynamic-tags) -  Dynamically assign tags relative to the current Record Type
 ***
