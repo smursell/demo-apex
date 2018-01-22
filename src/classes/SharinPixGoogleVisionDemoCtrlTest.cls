@@ -2,13 +2,14 @@
 public class SharinPixGoogleVisionDemoCtrlTest {
 
     @isTest
-	static void testSharinPixGoogleVisionDemoConstructor() {
-		Test.startTest();
-		SharinPixGoogleVisionDemoCtrl demoCtrl = new SharinPixGoogleVisionDemoCtrl();
-		String albumId = 'SharinPixGoogleVisionOCRDemoAlbum';
+    static void testSharinPixGoogleVisionDemoConstructor() {
+	    Test.startTest();
+	    SharinPixGoogleVisionDemoCtrl demoCtrl = new SharinPixGoogleVisionDemoCtrl();
+        Test.stopTest();
+	    String albumId = 'SharinPixGoogleVisionOCRDemoAlbum';
         String parameters = JSON.serialize(new Map<String, Object> {
             'abilities' => new Map<String, Object> {
-             	albumId => new Map<String, Object> {
+                albumId => new Map<String, Object> {
                     'see' => true,
                     'image_list' => true,
                     'image_update' => true
@@ -16,7 +17,6 @@ public class SharinPixGoogleVisionDemoCtrlTest {
             },
             'Id' => albumId
         });
-		Test.stopTest();        
         System.assert(demoCtrl.parameters.indexOf('{"image_update":true,"image_list":true,"see":true}') > 0);
 	}
 
@@ -32,12 +32,12 @@ public class SharinPixGoogleVisionDemoCtrlTest {
         public HTTPResponse respond(HTTPRequest req) {
             System.assert(req.getEndpoint().startsWith('https://vision.googleapis.com/v1/images:annotate?key='));
             System.assertEquals('POST', req.getMethod());
-    
+
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
             String body =  JSON.serialize(new Map<String, Object> {
                 'responses' => new List<String> {
-               		'data-response'
+                    'data-response'
                 }
             });
             res.setBody(body);
