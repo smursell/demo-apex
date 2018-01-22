@@ -11,7 +11,7 @@ public with sharing class SharinPixGoogleVisionDemoCtrl {
                 albumId => new Map<String, Object> {
                     'see' => true,
                     'image_list' => true,
-                    'image_upate' => true
+                    'image_update' => true
                 }
             },
             'Id' => albumId
