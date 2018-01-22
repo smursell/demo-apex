@@ -1,6 +1,5 @@
 @isTest
 public class SharinPixGoogleVisionDemoCtrlTest {
-
     @isTest
     static void testSharinPixGoogleVisionDemoConstructor() {
         Test.startTest();
@@ -28,11 +27,7 @@ public class SharinPixGoogleVisionDemoCtrlTest {
 	}
 
 	public class GoogleVisionMockResponse implements HttpCalloutMock {
-
         public HTTPResponse respond(HTTPRequest req) {
-            System.assert(req.getEndpoint().startsWith('https://vision.googleapis.com/v1/images:annotate?key='));
-            System.assertEquals('POST', req.getMethod());
-
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
             String body =  JSON.serialize(new Map<String, Object> {
