@@ -1,4 +1,4 @@
-trigger FieldVisitTrigger on Field_Visit__c (after insert) {
+trigger FieldVisitTrigger on Field_Visit__c (after insert, before update) {
     sharinpix.Client clientInstance = sharinpix.Client.getInstance();
     String token, appUrl;
     List<Field_Visit__c> updatedVisits = new List<Field_Visit__c>();
@@ -28,7 +28,15 @@ trigger FieldVisitTrigger on Field_Visit__c (after insert) {
         );
         appUrl = 'sharinpix://upload?token=' + token;
         System.debug('appUrl = ' + appUrl);
-        updatedVisits.add(new Field_Visit__c(Id = visit.Id, Mobile_App_URL__c = appUrl, Mobile_App_Token__c=token));
+        if (Trigger.isInsert) {
+            updatedVisits.add(new Field_Visit__c(Id = visit.Id, Mobile_App_URL__c = appUrl, Mobile_App_Token__c=token));
+        } else if (Trigger.isUpdate) {
+            if (String.isBlank(visit.Mobile_App_Token__c) || String.isBlank(visit.Mobile_App_URL__c)) {
+                visit.Mobile_App_Token__c = token;
+                visit.Mobile_App_URL__c = appUrl;
+                updatedVisits.add(visit);
+            }
+        }
     }
-    update updatedVisits;
+    if (Trigger.isInsert) update updatedVisits;
 }
