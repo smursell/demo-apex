@@ -8,7 +8,7 @@ public class SharinPixDemoAccountContactsSearchCtrl {
         Map<String, String> query = new Map<String, String>();
         String queryStr = '';
         for (Contact contact : contacts) {
-            queryStr += contact.Id + ' ';
+            queryStr += '"' + contact.Id + '" ';
         }
         query.put('q', queryStr);
         params = new Map<String, String> { 'path' => '/search?search_bar=false&q=' + clientInstance.token(query) };
