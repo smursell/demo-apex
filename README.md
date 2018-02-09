@@ -13,11 +13,14 @@ The options passed to `params` are as follows. These are passed similar to HTML 
  - `mode=[camera|roll]`
  - `roll=[true|false]`
  - `confirmation=[true|false]`
+ - `auto_tag=[any text value]`
 
 `camera` mode will open the camera for the user once the application is launched.
 
 `roll` determines whether to allow the user to choose from the roll or not. If `mode` is set to `roll`, `roll` will always be set to `true` and is not required to be specified.
 
 The `confirmation` parameter determines whether to preview an image before uploading.
+
+The `auto_tag` parameter enables the auto-tagging of images by specifying a text value.
 
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=mobile_app_launcher)
