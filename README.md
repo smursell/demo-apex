@@ -28,4 +28,12 @@ The `confirmation` parameter determines whether to preview an image before uploa
 
 The `auto_tag` parameter enables the auto-tagging of images by specifying a text value.
 
+## View Album
+It is possible to launch SharinPix Mobile App and view the images within a specific album through the use of the following URL:
+
+`sharinpix://view_album?album_id=<<id>>`,
+
+`<<id>>` corresponds to the Album Id from which the images will be displayed once the SharinPix Mobile App is launched.
+
+
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=mobile_app_launcher_fsl)
