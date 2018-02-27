@@ -5,8 +5,7 @@
         var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
         eventer(messageEvent,function(e) {
             if (e.origin !== "https://app.sharinpix.com") return;
-            
-            console.log('event', e.data.name);
+
             if(e.data.name == "viewer-image-viewed"){
                 if (e.data.payload.image.infos.format == 'pdf') {
                     document.getElementById('download-link').href = e.data.payload.image.original_url;
