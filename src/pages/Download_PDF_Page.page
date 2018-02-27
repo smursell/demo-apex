@@ -6,14 +6,16 @@
         eventer(messageEvent,function(e) {
             if (e.origin !== "https://app.sharinpix.com") return;
             
+            console.log('event', e.data.name);
             if(e.data.name == "viewer-image-viewed"){
                 if (e.data.payload.image.infos.format == 'pdf') {
                     document.getElementById('download-link').href = e.data.payload.image.original_url;
                     document.getElementById('download-link').text = 'Download PDF';
                 }else {
-                   document.getElementById('download-link').href = 'javascript: void(0)';
-                   document.getElementById('download-link').text = 'Not PDF Format.';
+                   document.getElementById('download-link').text = '';
                 }
+            }else if (e.data.name == "viewer-closed") {
+                document.getElementById("download-link").text = '';
             }
         }, false);
     </script>
