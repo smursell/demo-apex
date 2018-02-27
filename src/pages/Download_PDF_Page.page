@@ -1,0 +1,24 @@
+<apex:page standardController="Contact" extensions="DownloadPDFCtrl">
+    <script>
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            if (e.origin !== "https://app.sharinpix.com") return;
+            
+            if(e.data.name == "viewer-image-viewed"){
+                if (e.data.payload.image.infos.format == 'pdf') {
+                    document.getElementById('download-link').href = e.data.payload.image.original_url;
+                    document.getElementById('download-link').text = 'Download PDF';
+                }else {
+                   document.getElementById('download-link').href = 'javascript: void(0)';
+                   document.getElementById('download-link').text = 'Not PDF Format.';
+                }
+            }
+        }, false);
+    </script>
+    <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+    <p id="container">
+    	<a id="download-link" href="" download=""></a>
+    </p>
+</apex:page>
