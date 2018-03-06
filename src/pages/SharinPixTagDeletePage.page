@@ -1,0 +1,39 @@
+<apex:page standardController="Contact" extensions="SharinPixTagDelete">
+    <script>
+        var image_id;
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            document.getElementById("message").innerHTML ="";
+            if (e.origin !== "https://app.sharinpix.com") return;
+            if(e.data.name === "viewer-image-viewed") {
+                document.getElementById("deleteBtn").style.visibility = "visible";
+                image_id = e.data.payload.image.public_id;
+            }
+            if(e.data.name === "viewer-closed"){
+                document.getElementById("deleteBtn").style.visibility = "hidden";
+            }
+        }, false);
+
+        function deleteImage() {
+            Visualforce.remoting.Manager.invokeAction(
+                '{! $RemoteAction.SharinPixTagDelete.deleteImage}',
+                image_id,
+                '{!contactId}',
+                function(response) {
+                    if(response === "success") {
+                        var iframe = document.getElementById('sharinpix-iframe');
+                        iframe.src = iframe.src;
+                        document.getElementById("deleteBtn").style.visibility = "hidden";
+                    }else {
+                        document.getElementById("message").innerHTML ="Error! Unauthorized to delete this image.";
+                    }
+                }
+            );
+        }
+    </script>
+    <iframe id="sharinpix-iframe" src="{!url}" height="500px" width="100%" style="border: 0" />
+    <button id="deleteBtn" onclick="deleteImage()" style="visibility: hidden;">Delete Image</button>
+    <p id="message" style="color: red;"></p>
+</apex:page>
