@@ -24,4 +24,5 @@ Find below the links to SharinPix demos and their corresponding descriptions:
 * [Tags](https://github.com/SharinPix/demo-apex/tree/tags) - Display tags on a SharinPix album.
 * [Upload to SharinPix using URL](https://github.com/SharinPix/demo-apex/tree/upload_by_url) -  Upload an image with the use of a URL.
 * [Webhook Site](https://github.com/SharinPix/demo-apex/tree/webhook) - Handle webhooks from SharinPix for several events.
+* [Manage delete permission with Tag](https://github.com/SharinPix/demo-apex/tree/api_tag_delete) - Grant the possibility to delete an image with the use of a tag.
 ***
