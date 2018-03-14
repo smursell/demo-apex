@@ -37,7 +37,8 @@ global class CropFaceController {
         String crop = (String)optionsMap.get('crop');
         String gravity = (String)optionsMap.get('gravity');    
         String radius = (String)optionsMap.get('radius');
+        String zoom = (String) optionsMap.get('zoom');
         ImageFaceCrop ifc = new ImageFaceCrop();
-        return ifc.cropFace(imageId, width, height, crop, gravity, radius);
+        return ifc.cropFace(imageId, width, height, crop, gravity, radius, zoom);
     }
 }

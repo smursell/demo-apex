@@ -9,6 +9,8 @@ Go to an Account object. Edit its page layout and add the VisualForcePage 'CropF
 
 * Face - Automatically detects the largest face in an image and aims to make it the center of the cropped image. Alternatively, use face coordinates specified by API if available. Defaults to the 'north' gravity if no face was detected.
 
+* Zoom - The zoom parameter will now determine the dimensions of the extracted image, resulting in a bigger image when the zoom value is less than 1.0, or a smaller image when the zoom value is greater than 1.0.
+
 <img src="http://res.cloudinary.com/demo/image/upload/c_crop,g_face,h_80,w_80/face_top.jpg">
 
 * face:center - Same as the 'face' gravity, but defaults to 'center' gravity instead of 'north' if no face is detected.

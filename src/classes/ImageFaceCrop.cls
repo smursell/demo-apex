@@ -29,7 +29,8 @@ public class ImageFaceCrop {
                 'gravity' => 'face',
                 'radius' => 'max',
                 'width' => 200,
-                'height' => 200
+                'height' => 200,
+                'zoom' => 0.7
             }
         }).get('resource_url');
         return imgExtUrl;
@@ -45,8 +46,8 @@ public class ImageFaceCrop {
      * @default radius  [max]
      * @return  [URL of cropped image]
      */
-    public String cropFace(String imageId, Integer width, Integer height){
-        return cropFace(imageId, width, height, 'crop', 'face', 'max');
+    public String cropFace(String imageId, Integer width, Integer height, String zoom){
+        return cropFace(imageId, width, height, 'crop', 'face', 'max', zoom);
     }
     
     /**
@@ -59,7 +60,7 @@ public class ImageFaceCrop {
      * @param  radius  [max]
      * @return [URL of cropped image]
      */
-    public String cropFace(String imageId, Integer width, Integer height, String crop, String gravity, String radius){    
+    public String cropFace(String imageId, Integer width, Integer height, String crop, String gravity, String radius, String zoom){    
         imgExtUrl = (String)utils.getImageExternalUrl(new Map<String, Object> {
             'image_id' => imageId,
             'sharinpix' => new Map<String, Object> {
@@ -72,7 +73,8 @@ public class ImageFaceCrop {
                 'gravity' => gravity,
                 'radius' => radius,
                 'width' => width,
-                'height' => height
+                'height' => height,
+                'zoom' => zoom
             }
         }).get('resource_url');  
         return imgExtUrl;
