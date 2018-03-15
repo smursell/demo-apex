@@ -23,6 +23,7 @@ Find below the links to SharinPix demos and their corresponding descriptions:
 * [Salesforce field update on tag](https://github.com/SharinPix/demo-apex/tree/tag_to_field) -  Set up an automatic update on a Salesforce field based on tag(s) added to image(s).
 * [Tags](https://github.com/SharinPix/demo-apex/tree/tags) - Display tags on a SharinPix album.
 * [Upload to SharinPix using URL](https://github.com/SharinPix/demo-apex/tree/upload_by_url) -  Upload an image with the use of a URL.
+*  [Upload to SharinPix using URL with tags](https://github.com/SharinPix/demo-apex/tree/upload_with_tags/) - Upload an image along with its tags with the use of a URL.
 * [Webhook Site](https://github.com/SharinPix/demo-apex/tree/webhook) - Handle webhooks from SharinPix for several events.
 * [Manage delete permission with Tag](https://github.com/SharinPix/demo-apex/tree/api-tag-delete) - Grant the possibility to delete an image with the use of a tag.
 ***
