@@ -36,4 +36,5 @@ Insert the values for these parameters within the following line of code found i
 params = new Map<String, String> { 'path' => '/search?search_bar=false&q=' + clientInstance.token(query) + '&download=true&download_filename=my_zip_filename&download_filenames=inside_the_zip-00001'};
 ```
 Replace `my_zip_filename` and `inside_the_zip-00001` with the filename(s) of your choice.
+
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=account_contacts_search)
