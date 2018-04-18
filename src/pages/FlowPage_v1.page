@@ -1,0 +1,4 @@
+<apex:page StandardController="Account" extensions="FlowController">
+    <flow:interview name="SharinPix_Account_Contacts" interview="{! sp_flow }" finishLocation="/{!$CurrentPage.parameters.Id}"></flow:interview>
+	<sharinpix:SharinPix height="400px" rendered="{! sp_flow.RenderAlbum == true }" parameters="{'Id': '{! sp_flow.ContactId }', 'abilities':{'{! sp_flow.ContactId }':{'Access': {'image_upload':true,'image_list':true,'see':true,'image_delete':true}}}}" />	
+</apex:page>
