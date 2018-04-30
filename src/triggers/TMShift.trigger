@@ -1,8 +1,8 @@
-trigger FieldVisitTrigger on Field_Visit__c (after insert, before update) {
+trigger FieldVisitTrigger on Traffic_Management_Shift__c (after insert, before update) {
     sharinpix.Client clientInstance = sharinpix.Client.getInstance();
     String token, appUrl;
-    List<Field_Visit__c> updatedVisits = new List<Field_Visit__c>();
-    for (Field_Visit__c visit : Trigger.new) {
+    List<Traffic_Management_Shift__c> updatedVisits = new List<Field_Visit__c>();
+    for (Traffic_Management_Shift__c visit : Trigger.new) {
         token = sharinpix.Client.getInstance().token(
             new Map<String, Object> {
                 'album_id' => visit.Id,
@@ -29,11 +29,11 @@ trigger FieldVisitTrigger on Field_Visit__c (after insert, before update) {
         appUrl = 'sharinpix://upload?token=' + token;
         System.debug('appUrl = ' + appUrl);
         if (Trigger.isInsert) {
-            updatedVisits.add(new Field_Visit__c(Id = visit.Id, Mobile_App_URL__c = appUrl, Mobile_App_Token__c=token));
+            updatedVisits.add(new Traffic_Management_Shift__c(Id = visit.Id, 	SharinPix_Token__c = appUrl, Mobile_App_Token__c=token));
         } else if (Trigger.isUpdate) {
             if (String.isBlank(visit.Mobile_App_Token__c) || String.isBlank(visit.Mobile_App_URL__c)) {
-                visit.Mobile_App_Token__c = token;
-                visit.Mobile_App_URL__c = appUrl;
+                visit.	SharinPix_Token__c = token;
+                visit.	SharinPix_Token__c = appUrl;
                 updatedVisits.add(visit);
             }
         }
